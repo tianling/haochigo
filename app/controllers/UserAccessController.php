@@ -6,8 +6,7 @@ class UserAccessController extends BaseController{
 
         $mobile = Input::get('mobile');
         $email = Input::get('email');
-//        var_dump($email);
-//        die;
+
 
         $password = Input::get('password');
         //对密码进行hash加密
@@ -21,7 +20,26 @@ class UserAccessController extends BaseController{
         $user->user_type = 'front';
         $user->add_time = time();
 
+
         if($user->save()){
+            $uid = $user->id;
+        }else{
+            echo "user base Error";
+            exit;
+        }
+
+
+        $frontUser = new FrontUser;
+        $frontUser->uid = $uid;
+        $frontUser->email = $email;
+        $frontUser->mobile = $mobile;
+        $frontUser->email_passed = 1;
+        $frontUser->mobile_passed = 1;
+        $frontUser->integral = 0;
+        $frontUser->balance = 0;
+
+
+        if($frontUser->save()){
             echo "ok";
         }
 
