@@ -60,7 +60,7 @@ return array(
 			'password'  => 'vecmysql',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => '_v',
+//			'prefix'    => '_v',
 		),
 
 		'pgsql' => array(
