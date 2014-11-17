@@ -1,7 +1,11 @@
 <?php
 
+/*
+ **用户个人认证模块
+ */
 class UserAccessController extends BaseController{
 
+    //注册接口
     public function register(){
 
         $mobile = Input::get('mobile');
@@ -45,14 +49,44 @@ class UserAccessController extends BaseController{
 
     }
 
-    public function  index(){
-        echo "ok";
+
+    //登录接口
+    public function login(){
+
+        $account = Input::get('account');
+        $password = Input::get('password');
+
+        $accountCheck = $this->accountCheck($account);
+
+        $passwordCheck = Hash::check($password,$accountCheck->user->password);
+
+        if($passwordCheck){
+            Auth::login($accountCheck);
+        }
+
+        var_dump(Auth::user()->email);
+
+
+    }
+
+
+
+    //账号查询,支持邮箱和手机
+    private function accountCheck($account){
+
+        $accountData = FrontUser::where('email' ,'=', $account)->orWhere('mobile','=',$account)->first();
+
+        if(!$accountData){
+            return 400;//若账户不存在，返回错误码400
+        }else{
+            return $accountData;
+        }
     }
 
 
 
     //获取客户端ip地址
-    public function getIP(){
+    private function getIP(){
         if(!empty($_SERVER["HTTP_CLIENT_IP"])){
             $cip = $_SERVER["HTTP_CLIENT_IP"];
         }
@@ -67,6 +101,9 @@ class UserAccessController extends BaseController{
         }
         return $cip;
     }
+
+
+
 }
 
 
