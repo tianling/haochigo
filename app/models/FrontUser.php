@@ -20,4 +20,8 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
 
     public $timestamps = false;
 }
+
+
+
+
 ?>
