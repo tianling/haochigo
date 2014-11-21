@@ -54,13 +54,13 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '42.62.73.249',
+			'host'      => '42.62.73.253',
 			'database'  => 'haochigo',
 			'username'  => 'root',
 			'password'  => 'vecmysql',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-//			'prefix'    => '_v',
+			'prefix'    => 'v_',
 		),
 
 		'pgsql' => array(

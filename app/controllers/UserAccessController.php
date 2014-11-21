@@ -53,7 +53,8 @@ class UserAccessController extends BaseController{
     //登录接口
     public function login(){
         $geohash = new Geohash;
-        $geo = $geohash->geohashSet(39.98123848,116.30683690,1,1);
+        $geo = $geohash->geohashGet(39.98123848,116.30683690);
+//        $geo = $geohash->geohashSet(39.98123862,116.30683690,3,3);
 
         var_dump($geo);
         die;

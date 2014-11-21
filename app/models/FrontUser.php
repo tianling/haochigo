@@ -9,9 +9,9 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
 
     use UserTrait, RemindableTrait;
 
-    protected $table = 'v_front_user';
+    protected $table = 'front_user';
 
-    protected $primaryKey = 'front_uid';
+    protected $primaryKey = 'front_uid';//重定义主键名
 
     public function user()
     {
