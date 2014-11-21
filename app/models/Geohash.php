@@ -56,6 +56,12 @@ class Geohash extends Eloquent{
             }
 
         }else{
+            if(!is_int($shop_id) || !is_int($b_uid)){
+                return array(
+                    'status'=>'error',
+                    'msg'=>'用户id或者商铺id格式不合法'
+                );
+            }
 
             $this->shop_id = $shop_id;
             $this->b_uid = $b_uid;
