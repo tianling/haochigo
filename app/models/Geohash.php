@@ -104,7 +104,7 @@ class Geohash extends Eloquent{
 
         $shopArray = array();
         $i = 0;
-        
+
         //分别按八个区域的geohash前缀，去查询对应的shop
         foreach($neighbors as $value){
             $shopData = $this->where('geohash','like',$value.'%')->get();
