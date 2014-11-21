@@ -21,7 +21,7 @@ class Geohash extends Eloquent{
     /*
      **设置和生成店铺坐标对应geohash信息
      */
-    public function geohashSet($x,$y,$shop_id = null,$b_uid = null){
+    public function geohashSet($x,$y,$shop_id,$b_uid = null){
 
         if(!$this->coordCheck($x,$y)){
             return array(
