@@ -19,3 +19,5 @@ Route::get('register', 'UserAccessController@register');
 
 
 Route::post('login','UserAccessController@login');
+
+Route::get('message','UserAccessController@sendMessage');

@@ -69,6 +69,17 @@ class UserAccessController extends BaseController{
 
     }
 
+    public function sendMessage(){
+        $send = App::make('SendMessageClass');
+
+        $send->mobile = '13399857034';
+        $send->tpl_id = 1;
+        $send->tpl_value = '#code#=1234&#company#=好吃go';
+
+        $status = $send->tpl_send();
+        var_dump($status);
+    }
+
 
 
     //账号查询,支持邮箱和手机
