@@ -463,6 +463,8 @@ Route::get('/', function(){
     return View::make('template.home.home')->with($data);
 });
 
+Route::get('shop/{id}', 'ShopController@index');
+/*
 Route::get("shop", function() {
     $data = [
         "userbar" => [
@@ -661,7 +663,7 @@ Route::get("shop", function() {
 
     return View::make("template.shop.shop")->with($data);
 });
-
+*/
 Route::get("/login", function(){
     $data = [
         "find_password" => "http://www.hao123.com",

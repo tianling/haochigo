@@ -13,12 +13,20 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
 
     protected $primaryKey = 'front_uid';//重定义主键名
 
+    public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo('User','uid','uid');
     }
 
-    public $timestamps = false;
+    public function collectShop(){
+    	return $this->hasMany('CollectShop', 'uid', 'front_uid');
+    }
+
+    public function collectMenu(){
+    	return $this->hasMany('collectMenu');
+    }
 }
 
 
