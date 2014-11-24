@@ -1,0 +1,143 @@
+@charset "utf-8";
+/* 
+ * register form
+*/
+
+/* 
+ *  p no reset ..... 
+*/
+
+p{
+	margin: 0;
+}
+ 
+ .content_right{
+ 	font-family: "microsoft yahei";
+
+ 	//头部提示	
+ 	.register-hd{
+ 		margin: 0 0 10px;
+ 		line-height: 1.5;
+ 		.title{
+	 		font-size: 24px;
+	 		margin: 0;
+ 		}
+ 	}
+    
+    //中部表单和控件
+ 	.register-bd{
+ 		input{
+ 			box-sizing: border-box;
+ 		}
+ 		input[type="text"],input[type="password"]{
+ 			border: 1px solid #bbb;
+ 			border-radius: 2px;
+ 		}
+
+ 		//输入框控件集合
+ 		.u-input-item{
+ 			margin-bottom: 10px;
+ 			position: relative;
+
+	 		.box{
+	 			padding: 9.5px 10px;
+	 			height: 42px;
+	 			width: 280px;
+	 			font-size: 14px;
+	 			line-height: 1.5;
+	 		}
+
+	 		//错误提示
+	 		.u-error-tip{
+	 			font-size: 12px;
+	 			position: absolute;
+	 			top: -42px;
+	 			padding: 6px 7px;
+	 			background-color: #df4d3f;
+	 			border-radius: 2px;
+	 			color: #fff;
+	 		}
+	 		.u-error-tip:after{
+	 			content: "";
+	 			position: absolute;
+	 			bottom: -16px;
+	 			left: 50%;
+	 			margin-left: -4px;
+	 			width: 0;
+	 			height: 0;
+	 			border-style: solid;
+	 			border-width: 8px;
+	 			border-color: #df4d3f transparent transparent;
+	 		}
+
+	 		//验证码
+	 		.register-captcha{
+ 				width: 170px;
+ 		    }
+ 		    .captcha-img{
+ 		    	margin: 1px 0 0;
+ 		    	height: 40px;
+ 		    	cursor: pointer;
+ 		    }
+ 		}
+        
+        //使用条款
+ 		.u-protocol-link{
+ 			color: #999;
+ 			text-decoration: underline;
+ 			font-size: 13px;
+ 			margin-bottom: 15px;
+ 		}
+        
+        
+        //提交按钮
+ 		.u-register-submit{
+ 			background-color: #3199e8;
+ 			color: #fff;
+ 			font-size: 18px;
+ 			width: 100%;
+ 			height: 42px;
+ 			box-sizing: border-box;
+ 			display: block;
+ 			border-radius: 2px;
+ 			border: none;
+ 			text-align: center;
+ 			cursor: pointer;
+ 		}
+        
+ 	}
+
+ 	//底部
+ 	.register-ft{
+ 		margin-top: 20px;
+ 		line-height: 27px;
+
+ 		//微博和人人
+ 		.way-register-sns{
+ 			display: inline-block;
+ 		}
+
+ 		.sns{
+ 			display: inline-block;
+ 			width: 27px;
+ 			height: 27px;
+ 			margin-right: 8px;
+ 			background:url("http://localhost:8080/images/oauth.c5243751.png") 0 0;
+ 		}
+ 		.weibo{
+ 			background-position: -28px 0;
+ 		}
+ 		.renren{
+ 			background-position: 0 0;
+ 		}
+
+ 		//登陆链接
+ 		.login-link{
+ 			color: #3199e8;
+ 			text-decoration: none;
+ 		}
+ 		.login-link:hover{
+ 			text-decoration: underline;
+ 		}
+ 	}
+ }

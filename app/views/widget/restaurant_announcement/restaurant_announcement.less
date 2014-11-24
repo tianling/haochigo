@@ -1,0 +1,119 @@
+// quick import
+@import "../../est/src/all.less";
+
+.restaurant-board {
+  ul,li{list-style:none;}
+  font-size: 14px;
+  [class^="icon-"], [class*=" icon-"] {
+    display: inline-block;
+    vertical-align: text-bottom;
+  }
+  .rst-deliver-detail {
+    color: #08C;
+  }
+  .rst-badge-list {
+    padding: 7px 0 10px 17px;
+  }
+  .rst-badge-item {
+    padding: 10px 17px 10px 25px;
+    color: #666;
+    line-height: 22px;
+  }
+  .rst-badge-item>.icon-rst-badge {
+    margin: 0 8px 0 -23px;
+  }
+
+
+  .icon-rst-badge {
+    width: 15px;
+    height: 15px;
+    background: url("../../../images/widget-shop-icons.png") no-repeat;
+    &.featured{
+      width: 27px;
+      background-position: 0px 0px;
+    }
+    &.spicy {
+      background-position: 0 -20px;
+    }
+    &.new {
+      background-position: 0 -40px;
+    }
+    &.new-restaurant{
+      background-position: 0px -40px;
+    }
+    &.default-activity{
+      background-position: 0px -60px;
+    }
+    &.recoup{
+      background-position: 0px -80px;
+    }
+    &.invoice{
+      background-position: 0px -100px;
+    }
+    &.online-payment{
+      background-position: 0px -120px;
+    }
+    &.half-price{
+      background-position: 0px -140px;
+    }
+    &.new-user-discount{
+      background-position: 0px -160px;
+    }
+    &.third-party{
+      background-position: 0px -180px;
+    }
+    &.deliver-fee{
+      background-position: 0px -200px;
+    }
+    &.extra-discount{
+      background-position: 0px -220px;
+    }
+    &.coupon{
+      background-position: 0px -240px;
+    }
+    &.garnish{
+      background-position: 0 -260px;
+    }
+    &.more-discount{
+      background-position: 0px -280px;
+    }
+    &.get-hongbao{
+      background-position: 0px -320px;
+    }
+
+
+  }
+}
+.rst-block {
+  margin-bottom: 14px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  background: #FFF;
+}
+
+.restaurant-board>.rst-aside-title {
+  background: #FF6000;
+  border-radius: 2px 2px 0 0;
+  border-bottom: none;
+  color: #FFF;
+}
+
+.rst-aside-title {
+  margin: 0;
+  padding: 12px 17px;
+  border-bottom: 1px solid #EEE;
+  font: normal 16px/1em "Helvetica Neue",Arial,"Microsoft Yahei",sans-serif;
+}
+
+.rst-notice-board {
+  word-break: break-all;
+  word-break: break-word;
+  color: #EB6100;
+}
+.rst-notice-board, .rst-deliver-detail {
+  margin: 0;
+  padding: 14px 17px;
+  border-bottom: 1px solid #EEE;
+  line-height: 1.7;
+}
+

@@ -1,0 +1,162 @@
+
+
+ .collection-row-book,
+.collection-row-none {
+  cursor: pointer;
+  width: 171px;
+  height: 72px;
+  float: left;
+  padding: 10px;
+  border-left: 1px solid #ddd;
+}
+
+ .collection-row-book {
+  position: relative;
+}
+.collection-row-book .collection-row-book-close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  display: none;
+  background: url("../../../images/bg.gif") no-repeat -550px -773px;
+}
+.collection-row-book .collection-row-book-close i {
+  width: 14px;
+  height: 14px;
+}
+ .collection-row-book .collection-row-book-close:hover {
+  background: url("../../../images/bg.gif") no-repeat -148px -1019px;
+}
+.collection-row-book .collection-row-book-left {
+  float: left;
+}
+ .collection-row-book .collection-row-book-left .logo {
+  height: 44px;
+  width: 44px;
+  border: 1px solid #ddd;
+}
+ .collection-row-book .collection-row-book-left .logo img {
+  height: 40px;
+  width: 40px;
+  margin: 2px;
+}
+.collection-row-book .collection-row-book-left span {
+  float: left;
+  line-height: 16px;
+  color: #666;
+  font-size: 12px;
+  margin-top: 8px;
+  height: 16px;
+  text-align: center;
+  width: 46px;
+}
+ .collection-row-book .collection-row-book-left span.long_time {
+  background: #ffe2e2;
+}
+ .collection-row-book .collection-row-book-right {
+  margin-left: 10px;
+  float: left;
+  max-width: 117px;
+}
+ .collection-row-book .collection-row-book-right div {
+  max-width: 115px;
+}
+.collection-row-book .collection-row-book-right div.title {
+  margin-bottom: 7px;
+}
+.collection-row-book .collection-row-book-right div.title p {
+  font-size: 15px;
+  line-height: 18px;
+  color: #444;
+  margin: 0;
+  margin-top: 2px;
+}
+ .collection-row-book .collection-row-book-right div.title p:hover {
+  text-decoration: underline;
+}
+ .collection-row-book .collection-row-book-right div span {
+  font-size: 12px;
+}
+ .collection-row-book .collection-row-book-right div.reserve {
+  margin-bottom: 7px;
+}
+.collection-row-book .collection-row-book-right div.reserve span {
+  color: #59b170;
+  background: #f8f8ee;
+  border: 1px solid #59b170;
+  padding: 2px 4px;
+}
+ .collection-row-book .collection-row-book-right div.style {
+  margin-top: 9px;
+  margin-bottom: 5px;
+}
+ .collection-row-book .collection-row-book-right div.style span {
+  color: #666;
+  margin-top: 2px;
+}
+.collection-row-book .collection-row-book-right div.remark {
+  height: 19px;
+}
+.collection-row-book .collection-row-book-right div.remark span {
+  color: #999;
+}
+ .collection-row-book .collection-row-book-right div.busy {
+  margin-bottom: 7px;
+}
+.collection-row-book .collection-row-book-right div.busy span {
+  color: #999;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  padding: 2px 4px;
+}
+.collection-row-book .collection-row-book-right div div.star {
+  float: left;
+  width: 61px;
+  height: 14px;
+  background: url("../../../images/bg.gif") no-repeat;
+  margin-top: 2px;
+  margin-right: 2px;
+}
+.collection-row-book:hover {
+  background: #f9f9f9 !important;
+}
+ .collection-row-book:hover .title p {
+  color: #08c !important;
+}
+ .collection-row-book:hover .collection-row-book-close {
+  display: block;
+}
+ .collection .collection-row .collection-row-colse {
+     background: url("../../../images/restaurant_closed_bg.png");
+     color: #999;
+ }
+ .collection .collection-row .collection-row-colse span {
+     color: #999 !important;
+ }
+ .collection .collection-row .collection-row-colse p {
+     color: #999 !important;
+ }
+ .collection .collection-row .collection-row-colse div.logo img {
+     opacity: 0.5;
+     filter: alpha(opacity=50);
+     -moz-opacity: 0.5;
+     -khtml-opacity: 0.5;
+ }
+ .collection .collection-row .collection-row-none {
+     padding: 0;
+     width: 191px;
+     height: 92px;
+ }
+ .collection .collection-row .collection-row-none .add {
+     background: #ffffff url("../../../images/bg.gif") no-repeat -112px -94px;
+     border-left: 1px solid white;
+     border-right: 1px solid white;
+     text-align: left;
+     height: 92px;
+ }
+ .collection .collection-row .collection-row-none .add:hover {
+     background: #ffffff url("../../../images/bg.gif") no-repeat -303px -94px;
+ }
+

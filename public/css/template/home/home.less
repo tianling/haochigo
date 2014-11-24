@@ -1,0 +1,30 @@
+/*home模板的样式*/
+*{
+  margin:0px;
+  padding:0px;
+}
+body {
+  font: 12px Helvetica,Arial,sans-serif;
+  line-height: 1.62;
+}
+.yahei{
+  font-family: STHeiti,"Microsoft Yahei","微软雅黑",Arial,sans-serif;
+}
+
+// quick import
+@import '../../est/src/all.less';
+
+// override global variables
+@support-old-ie: false;
+@default-font-size: 12px;
+
+// ...your own awesome less code starts here...
+.global-normalize();
+
+.clearfix{
+  .clearfix();
+}
+a{
+  text-decoration: none;
+  outline: none;
+}

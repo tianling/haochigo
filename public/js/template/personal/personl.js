@@ -1,0 +1,1 @@
+require.config({baseUrl:"js/lib/",shim:{underscore:{exports:"_"}},paths:{personal:"../template/personal",footer:"../widget/footer",userBar:"../widget/userBar",siderBar:"../sideBar/siderBar"}}),define(["userBar/userBar","footer/footer","siderBar/siderBar"],function(){console.log("init")});

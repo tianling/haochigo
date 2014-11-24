@@ -1,0 +1,69 @@
+.ui-btn {
+	background-color: #ededed;
+	background-image: linear-gradient(to bottom, #efefef, #ebebeb);
+	display: inline-block;
+	padding: 6px 20px;
+	border-radius: 2px;
+	border: 1px solid #bbb;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	color: #444;
+	font-size: 13px;
+	line-height: 16px
+}
+
+.ui-btn:hover {
+	opacity: 0.9
+}
+
+.ui-btn:active {
+	box-shadow: 0 10px 10px rgba(0,0,0,0.05) inset
+}
+
+.ui-btn+.ui-btn {
+	margin-left: 10px
+}
+
+.ui-btn.btn-small {
+	padding: 4px 12px;
+	font-size: 12px
+}
+
+.ui-btn.btn-big {
+	padding: 10px 26px;
+	font-size: 16px
+}
+
+.ui-btn.btn-confirm {
+	background-color: #3ea6ff;
+	background-image: linear-gradient(to bottom, #42abff, #3ba2ff);
+	border-color: #368eca;
+	color: #fff
+}
+
+.ui-btn.btn-submit,.ui-btn.ui_submit {
+	background-color: #fff28e;
+	background-image: linear-gradient(to bottom, #fffab8, #ffea64);
+	border-color: #e2c78d
+}
+
+.ui-btn.btn-rp-test {
+	border-color: #e8d048;
+	background: #ffeb67;
+	box-shadow: 0 1px 0 #fff08e inset,0 1px 1px rgba(232,208,72,0.3)
+}
+
+.ui-btn.btn-disabled,.ui-btn.ui_disabled {
+	background-color: #eee;
+	background-image: linear-gradient(to bottom, #f6f6f6, #e6e6e6);
+	color: #bbb;
+	border-color: #ddd;
+	cursor: default
+}
+
+.ui-btn.btn-disabled:hover,.ui-btn.ui_disabled:hover {
+	opacity: 1
+}
+
+.ui-btn.btn-disabled:active,.ui-btn.ui_disabled:active {
+	box-shadow: none
+}

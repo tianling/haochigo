@@ -1,0 +1,205 @@
+.restaurant-list-table{
+  border-collapse: separate;
+}
+.shops {
+  width:960px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #f5f5f5;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  .shops-header{
+    font-size: 14px;
+    line-height: 32px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    background-color: #fbfbfb;
+    background-image: -moz-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -ms-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -webkit-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -o-linear-gradient(top,#fff,#f5f5f5);
+    background-image: linear-gradient(top,#fff,#f5f5f5);
+    padding: 0 10px;
+
+    
+    & span {
+      float: left;
+      line-height: 40px;
+      cursor: pointer;
+      margin-right: 5px;
+      word-break: break-all;
+    }
+
+
+    & span.fliter {
+      margin-top: 11px;
+      margin-right: 10px;
+      border-right: 1px dashed #000;
+      height: 17px;
+      margin-left: 10px;
+    }
+
+    & input {
+      vertical-align: 2px;
+    }
+    .flavor_block {
+      display: block;
+      float: left;
+      position: relative;
+    }
+
+    .drop_button {
+      cursor: pointer;
+      width: 59px;
+      display: block;
+      text-align: center;
+      line-height: 40px;
+      position: relative;
+      top: -1px;
+    }
+
+
+    .flavor_block ul {
+      display: none;
+      position:absolute;
+      margin: 0;
+      padding: 0;
+      top: 100%;
+      left: 0;
+      background: #F0F0F0;
+    }
+    .flavor_block li {
+      list-style: none;
+      width: 59px;
+      height: 30px;
+      text-align: center;
+    }
+  }
+
+  .shop_activities {
+    font-size: 14px;
+    line-height: 32px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    background-color: #fbfbfb;
+    background-image: -moz-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -ms-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -webkit-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -o-linear-gradient(top,#fff,#f5f5f5);
+    background-image: linear-gradient(top,#fff,#f5f5f5);
+    padding: 0 10px;
+
+    span.activities-btn{
+      float: left;
+      cursor: pointer;
+      margin-right: 30px;
+      line-height: 32px;
+      font-size: 14px;
+      display: inline-block;
+    }
+  }
+
+  .shop_container {
+    margin-bottom: 0px;
+    border-collapse: separate;
+    border-radius: 0px;
+
+    .shop_sec{
+      width: 189px;
+      overflow: hidden;
+    }
+
+    .flavour_collection {
+      position: relative;
+      margin-left: 115px;
+      text-align: right;
+    }
+
+
+    .shop_content {
+      vertical-align: top;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .logo_wrapper{
+      float: left;
+      margin-left: 10px;
+      line-height: 15px;
+    }
+
+    .logo{
+      height: 42px;
+      width: 42px;
+      border: 1px solid #DDD;
+      padding: 1px;
+      position: relative;
+    }
+    .logo a{
+      color: #333;
+    }
+
+    .deliver_time{
+      line-height: 14px;
+      color: #666;
+      font-size: 12px;
+      margin-top: 8px;
+      padding-top: 2px;
+      height: 16px;
+      text-align: center;
+    }
+
+    .info {
+      float: left;
+      margin-left: 8px;
+      margin-right: 7px;
+      width: 118px;
+      overflow: hidden;
+    }
+
+    .name {
+      font-size: 15px;
+      color: #333;
+      height: 18px;
+      overflow: hidden;
+    }
+    .name a {
+      color: #333;
+    }
+
+    .states_lable{
+      float: left;
+      width: 100%;
+      margin-top: 9px;
+      height: 20px;
+    }
+    .states_lable span{
+      color: #59B170;
+      background: none repeat scroll 0% 0% #F8F8EE;
+      border: 1px solid #59B170;
+      padding: 2px 4px;
+      font-size: 12px;
+    }
+
+    .status_desc {
+      line-height: 14px;
+      float: left;
+      font-size: 12px;
+      width: 100%;
+      margin-top: 11px;
+    }
+    .status_desc div{
+      color: #999;
+    }
+
+    .shop_statement{
+      display: none;
+    }
+
+
+
+  }
+
+
+
+}

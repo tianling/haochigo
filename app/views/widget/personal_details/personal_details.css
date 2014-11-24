@@ -1,0 +1,153 @@
+.content-header {
+  border-bottom: 1px solid #E8E8E8;
+  padding: 10px 15px;
+  overflow: hidden;
+  word-break: break-all;
+  *zoom: 1;
+  color: #555;
+}
+.content-header:before,
+.content-header:after {
+  display: table;
+  content: "";
+}
+.content-header:after {
+  clear: both;
+}
+.content-header h2 {
+  margin: 0;
+  font: bold 18px/1.5 tahoma, sans-serif;
+  float: left;
+}
+.content-inner {
+  padding: 15px;
+  color: #555;
+}
+.content-inner .trade-record-filter {
+  padding-left: 20px;
+  border-bottom: 1px solid #E8E8E8;
+  margin: 0;
+  background: #EFF8FF;
+  border: 1px solid #A6C9E2;
+  padding: 10px 10px 0;
+}
+.content-inner p {
+  margin: 0 0 9px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+.content-inner .trade-record-filter-lineone {
+  width: 60px;
+}
+.content-inner .trade-record-filter a {
+  margin: 0 5px;
+}
+.content-inner .trade-record-filter .active {
+  background: #08C;
+  color: #FFF;
+}
+.content-inner table {
+  max-width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+.content-inner table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+.content-inner .table {
+  width: 100%;
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+.content-inner .records-table {
+  margin-top: 18px;
+}
+.content-inner th {
+  background: #EEE;
+}
+.content-inner .table th,
+.content-inner .table td {
+  padding: 8px;
+  line-height: 18px;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid #DDD;
+  border-top: 0;
+}
+.content-inner .amount {
+  text-align: right;
+  padding-right: 50px;
+}
+.content-inner td {
+  vertical-align: middle;
+  background-color: #F9F9F9;
+  padding: 8px;
+  line-height: 18px;
+  text-align: left;
+  border-top: 1px solid #DDD;
+}
+.content-inner .green {
+  color: #45A022;
+}
+.content-inner .records-table .amount {
+  text-align: right;
+  padding-right: 50px;
+}
+.content-inner tr:nth-child(even) td {
+  background: #FFF;
+}
+.content-inner tr:nth-child(even):hover td {
+  background: #F5F5F5;
+}
+.content-inner tr {
+  border-top: 1px solid #DDD;
+}
+.pagination {
+  padding-left: 10px;
+}
+.pagination {
+  height: 36px;
+  margin: 18px 0;
+}
+.pagination ul {
+  display: inline-block;
+  margin-left: 0;
+  margin-bottom: 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  list-style: none;
+}
+.pagination li {
+  display: inline;
+  word-break: break-all;
+  line-height: 18px;
+}
+.pagination li a {
+  color: #08C;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  float: left;
+  padding: 0 14px;
+  line-height: 34px;
+  text-decoration: none;
+  border: 1px solid #DDD;
+  border-left-width: 0;
+}
+.pagination li:first-child a {
+  border-left-width: 1px;
+  border-radius: 3px 0 0 3px;
+}
+.pagination .active a {
+  color: #999;
+  cursor: default;
+}
+.pagination .active a {
+  background-color: #F5F5F5;
+}
+.pagination a:hover,
+.pagination .active a {
+  background-color: #F5F5F5;
+}

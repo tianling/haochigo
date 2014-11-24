@@ -1,0 +1,183 @@
+.more_shops{
+  width:960px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #f5f5f5;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  overflow: hidden;
+  margin-bottom: 15px;
+  .more_shops-header{
+    font-size: 14px;
+    line-height: 32px;
+    color: #333;
+    border-bottom: 1px solid #ccc;
+    background-color: #fbfbfb;
+    background-image: -moz-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -ms-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -webkit-linear-gradient(top,#fff,#f5f5f5);
+    background-image: -o-linear-gradient(top,#fff,#f5f5f5);
+    background-image: linear-gradient(top,#fff,#f5f5f5);
+    .title{
+      margin-left: 10px;
+    }
+  }
+  &:first-child{
+    border:0;
+  }
+  .more_shops-row{
+    width: 960px;
+    height: 92px;
+    border-top: 1px solid #DDD;
+    .more_shops-row-book,.more_shops-row-none{
+      cursor:pointer;
+      width: 171px;
+      height:72px;
+      float: left;
+      padding: 10px;
+      border-left: 1px solid #ddd;
+    }
+    a:first-child div.more_shops-row-book{
+      border:0;
+    }
+    .more_shops-row-book{
+      position: relative;
+      .collect_star{
+        background: transparent url("../../../../images/bg.gif") repeat scroll -480px -776px;
+        height: 22px;
+        width: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+      .more_shops-row-book-left{
+        float: left;
+        .logo{
+          height: 44px;
+          width: 44px;
+          border: 1px solid #ddd;
+          img{
+            height: 40px;
+            width: 40px;
+            margin: 2px;
+          }
+        }
+        span{
+          float: left;
+          line-height: 16px;
+          color: #666;
+          font-size: 12px;
+          margin-top: 8px;
+          height: 16px;
+          text-align: center;
+          width: 46px;
+          &.long_time{
+            background: #ffe2e2;
+          }
+        }
+      }
+      .more_shops-row-book-right{
+        margin-left: 10px;
+        float: left;
+        max-width: 117px;
+        div{
+          max-width: 115px;
+          &.title{
+            p{
+              font-size: 15px;
+              line-height: 18px;
+              color: #444;
+              margin: 0;
+              margin-top: 2px;
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+          span{
+            font-size: 12px;
+          }
+          &.reserve{
+            margin-top: 7px;
+            margin-bottom: 7px;
+            span {
+              color: #59b170;
+              background: #f8f8ee;
+              border: 1px solid #59b170;
+              padding: 2px 4px;
+            }
+          }
+          &.style{
+            span {
+              color: #666;
+              margin-top: 2px;
+            }
+          }
+          &.remark {
+            height: 19px;
+            span {
+              color: #999;
+            }
+          }
+          &.busy {
+            margin-top: 7px;
+            margin-bottom: 7px;
+            span {
+              color: #999;
+              background: #f5f5f5;
+              border: 1px solid #ddd;
+              padding: 2px 4px;
+            }
+          }
+          div.star{
+            float: left;
+            width: 61px;
+            height: 14px;
+            background: url("../../../../images/bg.gif") no-repeat;
+            margin-top: 2px;
+            margin-right: 2px;
+          }
+        }
+      }
+      &:hover{
+        background: #f9f9f9 !important;
+        .title p{
+          color: #08c !important;
+        }
+        .more_shops-row-book-close{
+          display: block;
+        }
+      }
+    }
+    .more_shops-row-colse{
+      background: url("../../../../images/restaurant_closed_bg.png");
+      color:#999;
+      span{
+        color: #999 !important;
+      }
+      p{
+        color: #999 !important;
+      }
+      div.logo img{
+        opacity: 0.5;
+        filter:alpha(opacity=50);
+        -moz-opacity:0.5;
+        -khtml-opacity: 0.5;
+      }
+    }
+    .more_shops-row-none{
+      padding: 0;
+      width: 191px;
+      height: 92px;
+      .add{
+        background: #fff url("../../../../images/bg.gif") no-repeat -112px -94px;
+        border-left: 1px solid white;
+        border-right: 1px solid white;
+        text-align: left;
+        height: 92px;
+        &:hover{
+          background: #fff url("../../../../images/bg.gif") no-repeat -303px -94px;
+        }
+      }
+    }
+  }
+}

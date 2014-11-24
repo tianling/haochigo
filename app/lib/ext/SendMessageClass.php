@@ -37,7 +37,7 @@ class SendMessageClass{
     public function tpl_send(){
 
         $url="http://yunpian.com/v1/sms/tpl_send.json";
-        
+
         $encoded_tpl_value = urlencode("$this->tpl_value");
         $post_string="apikey=$this->apiKey&tpl_id=$this->tpl_id&tpl_value=$encoded_tpl_value&mobile=$this->mobile";
         return $this->sock_post($url, $post_string);
@@ -71,7 +71,6 @@ class SendMessageClass{
         }
         return $data;
     }
-
 
 
 

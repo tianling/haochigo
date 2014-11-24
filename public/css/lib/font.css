@@ -1,0 +1,167 @@
+@font-face {
+	font-family: 'eleme';
+	src: url('../fonts/eleme.eot');
+	src: url('../fonts/eleme.eot?#iefix') format('embedded-opentype'),
+	url('../fonts/eleme.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="glyph-"], [class*=" glyph-"] {
+	font-family: 'eleme';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*
+ * NON-PRIVATE USE AREAS
+ */
+.glyph-eleme:before {
+	content: "\78";
+}
+.glyph-logo-eleme:before {
+	content: "\58";
+}
+.glyph-logo-e:before {
+	content: "\65";
+}
+.glyph-logo-l:before {
+	content: "\6c";
+}
+.glyph-logo-dot:before {
+	content: "\2e";
+}
+.glyph-logo-m:before {
+	content: "\6d";
+}
+.glyph-logo-e-sup:before {
+	content: "\45";
+}
+.glyph-plus:before {
+	content: "\2b";
+}
+.glyph-minus:before {
+	content: "\2d";
+}
+.glyph-close:before {
+	content: "\d7";
+}
+.glyph-star:before {
+	content: "\2605";
+}
+.glyph-fav:before {
+	content: "\2665";
+}
+
+/*
+ * PRIVATE USE AREAS
+ */
+
+.glyph-tools:before {
+	content: "\e000";
+}
+.glyph-mobile:before {
+	content: "\e001";
+}
+.glyph-search:before {
+	content: "\e002";
+}
+.glyph-user:before {
+	content: "\e003";
+}
+.glyph-location:before {
+	content: "\e004";
+}
+.glyph-config:before {
+	content: "\e005";
+}
+.glyph-off:before {
+	content: "\e006";
+}
+.glyph-camera:before {
+	content: "\e007";
+}
+.glyph-tel:before {
+	content: "\e008";
+}
+.glyph-back:before {
+	content: "\e009";
+}
+.glyph-toggle:before {
+	content: "\e00a";
+}
+.glyph-caret-up:before {
+	content: "\e00b";
+}
+.glyph-caret-down:before {
+	content: "\e00c";
+}
+.glyph-caret-left:before {
+	content: "\e00d";
+}
+.glyph-caret-right:before {
+	content: "\e00e";
+}
+.glyph-sort-up:before {
+	content: "\e00f";
+}
+.glyph-sort-down:before {
+	content: "\e010";
+}
+.glyph-bracket-left:before {
+	content: "\e011";
+}
+.glyph-bracket-right:before {
+	content: "\e012";
+}
+.glyph-bracket-down:before {
+	content: "\e013";
+}
+.glyph-bracket-up:before {
+	content: "\e014";
+}
+.glyph-comment:before {
+	content: "\e015";
+}
+.glyph-image:before {
+	content: "\e016";
+}
+.glyph-cart:before {
+	content: "\e017";
+}
+.glyph-message:before {
+	content: "\e018";
+}
+.glyph-feedback:before {
+	content: "\e019";
+}
+.glyph-arrow-back:before {
+	content: "\e01a";
+}
+.glyph-flag:before {
+	content: "\e01b";
+}
+.glyph-key:before {
+	content: "\e01c";
+}
+/* e01c */
+.glyph-renren:before {
+	content: "\e01d";
+}
+.glyph-weibo:before {
+	content: "\e01e";
+}
+.glyph-qq:before {
+	content: "\e01f";
+}
+.glyph-wechat:before {
+	content: "\e020";
+}

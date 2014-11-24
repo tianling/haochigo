@@ -1,0 +1,113 @@
+.restaurant-board {
+  font-size: 14px;
+}
+.restaurant-board ul,
+.restaurant-board li {
+  list-style: none;
+}
+.restaurant-board [class^="icon-"],
+.restaurant-board [class*=" icon-"] {
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+.restaurant-board .rst-deliver-detail {
+  color: #08C;
+}
+.restaurant-board .rst-badge-list {
+  padding: 7px 0 10px 17px;
+}
+.restaurant-board .rst-badge-item {
+  padding: 10px 17px 10px 25px;
+  color: #666;
+  line-height: 22px;
+}
+.restaurant-board .rst-badge-item > .icon-rst-badge {
+  margin: 0 8px 0 -23px;
+}
+.restaurant-board .icon-rst-badge {
+  width: 15px;
+  height: 15px;
+  background: url("../../../images/widget-shop-icons.png") no-repeat;
+}
+.restaurant-board .icon-rst-badge.featured {
+  width: 27px;
+  background-position: 0px 0px;
+}
+.restaurant-board .icon-rst-badge.spicy {
+  background-position: 0 -20px;
+}
+.restaurant-board .icon-rst-badge.new {
+  background-position: 0 -40px;
+}
+.restaurant-board .icon-rst-badge.new-restaurant {
+  background-position: 0px -40px;
+}
+.restaurant-board .icon-rst-badge.default-activity {
+  background-position: 0px -60px;
+}
+.restaurant-board .icon-rst-badge.recoup {
+  background-position: 0px -80px;
+}
+.restaurant-board .icon-rst-badge.invoice {
+  background-position: 0px -100px;
+}
+.restaurant-board .icon-rst-badge.online-payment {
+  background-position: 0px -120px;
+}
+.restaurant-board .icon-rst-badge.half-price {
+  background-position: 0px -140px;
+}
+.restaurant-board .icon-rst-badge.new-user-discount {
+  background-position: 0px -160px;
+}
+.restaurant-board .icon-rst-badge.third-party {
+  background-position: 0px -180px;
+}
+.restaurant-board .icon-rst-badge.deliver-fee {
+  background-position: 0px -200px;
+}
+.restaurant-board .icon-rst-badge.extra-discount {
+  background-position: 0px -220px;
+}
+.restaurant-board .icon-rst-badge.coupon {
+  background-position: 0px -240px;
+}
+.restaurant-board .icon-rst-badge.garnish {
+  background-position: 0 -260px;
+}
+.restaurant-board .icon-rst-badge.more-discount {
+  background-position: 0px -280px;
+}
+.restaurant-board .icon-rst-badge.get-hongbao {
+  background-position: 0px -320px;
+}
+.rst-block {
+  margin-bottom: 14px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  background: #FFF;
+}
+.restaurant-board > .rst-aside-title {
+  background: #FF6000;
+  border-radius: 2px 2px 0 0;
+  border-bottom: none;
+  color: #FFF;
+}
+.rst-aside-title {
+  margin: 0;
+  padding: 12px 17px;
+  border-bottom: 1px solid #EEE;
+  font: normal 16px/1em "Helvetica Neue", Arial, "Microsoft Yahei", sans-serif;
+}
+.rst-notice-board {
+  word-break: break-all;
+  word-break: break-word;
+  color: #EB6100;
+}
+.rst-notice-board,
+.rst-deliver-detail {
+  margin: 0;
+  padding: 14px 17px;
+  border-bottom: 1px solid #EEE;
+  line-height: 1.7;
+}

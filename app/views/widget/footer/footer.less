@@ -1,0 +1,32 @@
+@import '../../est/src/all.less';
+#footer{
+  width: 960px;
+  margin: 0 auto;
+  p{
+    text-align: center;
+    margin: 0 0 15px;
+    color: #777;
+  }
+}
+.ft-links{
+  display: block;
+  padding: 0;
+  margin: 0 0 20px;
+  list-style: none;
+  text-align: center;
+  .ft-link{
+    display: inline-block;
+    padding: 0 10px;
+    word-break: break-all;
+    border-right: 1px solid #ddd;
+    height: 14px;
+    line-height: 1.45em;
+    &.last{border: none;}
+    a{
+      text-decoration: none;
+      .font-size-rem(14px);
+      color:#000;
+    }
+  }
+}
+

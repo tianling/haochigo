@@ -1,0 +1,144 @@
+/* 
+ * login form
+*/
+/* 
+ *  p no reset ..... 
+*/
+p {
+  margin: 0; }
+
+.content_form {
+  font-family: "microsoft yahei"; }
+  .content_form .login-hd {
+    margin: 0 0 10px;
+    line-height: 1.5; }
+    .content_form .login-hd .title {
+      font-size: 24px;
+      margin: 0; }
+    .content_form .login-hd .switch:after {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      background: url("http://localhost:8080/images/set.f2e518a7.png") no-repeat 0 0;
+      vertical-align: middle;
+      margin-left: 3px; }
+    .content_form .login-hd .login-mobile, .content_form .login-hd .login-normal {
+      margin-top: 10px;
+      color: #08c;
+      text-decoration: none; }
+    .content_form .login-hd .login-normal:after {
+      background-position: 0 -14px;
+      height: 16px; }
+    .content_form .login-hd .login-mobile:after {
+      background-position: 0 0;
+      height: 14px; }
+  .content_form .login-bd input {
+    box-sizing: border-box; }
+  .content_form .login-bd input[type="text"], .content_form .login-bd input[type="password"] {
+    border: 1px solid #bbb;
+    border-radius: 2px; }
+  .content_form .login-bd .u-input-item {
+    margin-bottom: 10px;
+    position: relative; }
+    .content_form .login-bd .u-input-item .box {
+      padding: 9.5px 10px;
+      height: 42px;
+      width: 280px;
+      font-size: 14px;
+      line-height: 1.5; }
+    .content_form .login-bd .u-input-item .u-error-tip {
+      font-size: 12px;
+      position: absolute;
+      top: -42px;
+      padding: 6px 7px;
+      background-color: #df4d3f;
+      border-radius: 2px;
+      color: #fff; }
+    .content_form .login-bd .u-input-item .u-error-tip:after {
+      content: "";
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      margin-left: -4px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px;
+      border-color: #df4d3f transparent transparent; }
+    .content_form .login-bd .u-input-item .login-captcha {
+      width: 170px; }
+    .content_form .login-bd .u-input-item .captcha-img {
+      margin: 1px 0 0;
+      height: 40px;
+      cursor: pointer; }
+    .content_form .login-bd .u-input-item .sms-btn {
+      background-color: #3199e8;
+      color: #fff;
+      width: 106px;
+      right: 5px;
+      top: 5px;
+      padding: 0 5px;
+      height: 32px;
+      display: block;
+      box-sizing: border-box;
+      border-radius: 2px;
+      border: none;
+      text-align: center;
+      position: absolute; }
+  .content_form .login-bd .u-helper {
+    margin: 15px 0; }
+    .content_form .login-bd .u-helper .label-auto {
+      cursor: pointer; }
+    .content_form .login-bd .u-helper .login-rember {
+      box-sizing: border-box;
+      padding: 0; }
+    .content_form .login-bd .u-helper .forget-link {
+      color: #3199e8;
+      text-decoration: none; }
+    .content_form .login-bd .u-helper .forget-link:hover {
+      text-decoration: underline; }
+  .content_form .login-bd .u-login-submit {
+    background-color: #3199e8;
+    color: #fff;
+    font-size: 18px;
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    display: block;
+    border-radius: 2px;
+    border: none;
+    text-align: center;
+    cursor: pointer; }
+  .content_form .login-bd .way-login-voice {
+    text-align: center;
+    margin: 15px 0; }
+    .content_form .login-bd .way-login-voice .voice-btn {
+      color: #08c;
+      text-decoration: none; }
+    .content_form .login-bd .way-login-voice .u-voice-process {
+      background-color: #e9e9e9; }
+    .content_form .login-bd .way-login-voice .dialing-number {
+      color: #f60;
+      padding: 0 3px; }
+  .content_form .login-ft {
+    margin-top: 20px;
+    line-height: 27px; }
+    .content_form .login-ft .way-login-sns {
+      display: inline-block; }
+    .content_form .login-ft .sns {
+      display: inline-block;
+      width: 27px;
+      height: 27px;
+      margin-right: 8px;
+      background: url("http://localhost:8080/images/oauth.c5243751.png") 0 0; }
+    .content_form .login-ft .weibo {
+      background-position: -28px 0; }
+    .content_form .login-ft .renren {
+      background-position: 0 0; }
+    .content_form .login-ft .register-link {
+      color: #3199e8;
+      text-decoration: none; }
+    .content_form .login-ft .register-link:hover {
+      text-decoration: underline; }
+
+/*# sourceMappingURL=login_form.css.map */
