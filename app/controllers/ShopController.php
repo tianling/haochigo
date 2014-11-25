@@ -16,28 +16,28 @@ class ShopController extends BaseController {
 	public function index($shop_id){
 		$data = array();
 
-		$data['userbar']['url'] = array("my_place" => "这里是地址",
-                "switch_palce" => "##",
-                "logo" => "123" ,                
-                "mobile" => "123",      
-                "my_ticket" => "123",     
-                "my_gift"  => "123",  
-                "feedback" => "123",    
-                "shop_chart" => "123",
-                "user_mail" => "123",     
-                "personal" => "123",    
-                "my_collection" => "123",  
-                "my_secure" => "123",   
-                "loginout" => "123",     
-                "switch_place" => "123"   
+		$data['userbar']['url'] = array("my_place" => "这里是地址",					// 这里的数据是前端写的，我把它复制到这儿来，获取该信息的函数应该写在用户系统里吧
+				"switch_palce"  => "##",
+				"logo"          => "123" ,                
+				"mobile"        => "123",      
+				"my_ticket"     => "123",     
+				"my_gift"       => "123",  
+				"feedback"      => "123",    
+				"shop_chart"    => "123",
+				"user_mail"     => "123",     
+				"personal"      => "123",    
+				"my_collection" => "123",  
+				"my_secure"     => "123",   
+				"loginout"      => "123",     
+				"switch_place"  => "123"   
                 );
-		$data['top_bar'] = $this->getTopbar($shop_id);
-		$data['good_category']['data'] = $this->getGoodCategory($shop_id);
+		$data['top_bar']                          = $this->getTopbar($shop_id);
+		$data['good_category']['data']            = $this->getGoodCategory($shop_id);
 		$data['category']['data']['classify_sec'] = $this->getCategory($shop_id);
-		$data['announcement']['data'] = $this->getAnnouncement($shop_id);
-		$data['best_seller']['data'] = $this->getBestSeller($shop_id);	// 本周热卖
+		$data['announcement']['data']             = $this->getAnnouncement($shop_id);
+		$data['best_seller']['data']              = $this->getBestSeller($shop_id);	// 本周热卖
 #TODO：地图地址未完成
-		$data['shop_map']['data']['map_url'] = '地图地址';				// 地图地址
+		$data['shop_map']['data']['map_url']      = '地图地址';				// 地图地址
 		return View::make("template.shop.shop")->with($data);
 	}
 
@@ -65,7 +65,7 @@ class ShopController extends BaseController {
 		$top_bar['url']['photo_url']   = 'shop/'.$shop_id.'/photo';	// 美食墙的地址
 		$top_bar['url']['message_url'] = 'shop/'.$shop_id.'/message';// 商家留言的地址
 #TODO：在routes前端自己写的数据里有map_url选项，API里有两个不同的top_bar->url
-		$top_bar['url']['map_url']	= '地图地址';
+		$top_bar['url']['map_url']	   = '地图地址';
 		$top_bar['data']['shop_id']    	   = $shop_id;					// 商家ID
 #TODO：place_id不需要
 		$top_bar['data']['shop_logo'] 	   = $shop->pic;			// 商家的logo图片地址
@@ -84,9 +84,9 @@ class ShopController extends BaseController {
 		$top_bar['data']['price_begin']    = $shop->begin_price;	// 起送价
 		$top_bar['data']['is_collected']   = in_array($shop_id, $front_user->collectShop->lists('shop_id'))?true:false;	// 是否被收藏了
 #TODO：右上角的送货速度，董天成添加这个API
-		$top_bar['data']['interval'] = $shop->interval;				// 送餐速度
+		$top_bar['data']['interval'] 	   = $shop->interval;				// 送餐速度
 #TODO：shop_remark API里两个不同的top_bar
-		$top_bar['data']['shop_remark'] = '';
+		$top_bar['data']['shop_remark']    = '';
 		return $top_bar;
 	}
 
@@ -98,30 +98,30 @@ class ShopController extends BaseController {
 	public function getGoodCategory($shop_id){
 		$data = array();
 		$shop = Shop::find($shop_id);
-
-		$groups = $shop->groups->all();
+				
+		$groups         = $shop->groups->all();
 		$goods_category = array();
-		$good_activity = array();
+		$good_activity  = array();
 		foreach($groups as $group){
 			$one = array();
 			if($group->activity_id == 0){		// 不是活动
-				$one['classify_name'] = $group->name;
+				$one['classify_name']      = $group->name;
 				$one['classify_name_abbr'] = $group->name_abbr;
-				$one['classify_id'] = $group->id;
-				$one['classify_count'] = Menu::where('shop_id', $shop_id)->where('group_id', $group->activity_id)->get()->count('shop_id');
-				$one['classify_icon'] = $group->icon;
+				$one['classify_id']        = $group->id;
+				$one['classify_count']     = Menu::where('shop_id', $shop_id)->where('group_id', $group->activity_id)->get()->count('shop_id');
+				$one['classify_icon']      = $group->icon;
 				array_push($goods_category, $one);
 			}else{								// 是活动的
-				$act = Activity::find($group->activity_id);
-				$one['activity_name'] = $act->name;
-				$one['activity_id'] = $act->aid;
-				$one['activity_icon'] = $act->icon;
+				$act                       = Activity::find($group->activity_id);
+				$one['activity_name']      = $act->name;
+				$one['activity_id']        = $act->aid;
+				$one['activity_icon']      = $act->icon;
 				$one['activity_statement'] = $act->intro;
 				array_push($good_activity, $one);
 			}
 		}
 		$data['goods_category'] = $goods_category;
-		$data['good_activity'] = $good_activity;
+		$data['good_activity']  = $good_activity;
 		return $data;
 	}
 
@@ -139,7 +139,7 @@ class ShopController extends BaseController {
 			$one = array();
 
 			$one['classify_name'] = $group->name;
-			$one['classify_id'] = $group->id;
+			$one['classify_id']   = $group->id;
 			$one['classify_icon'] = $group->icon;
 
 			if($group->activity_id == 0 ){
@@ -151,9 +151,9 @@ class ShopController extends BaseController {
 				$one['activity_ads']['activity_statement'] = $act->intro;
 			}
 
-			$goods = Menu::where('shop_id', $shop_id)->where('group_id', $group->id)->get();
+			$goods           = Menu::where('shop_id', $shop_id)->where('group_id', $group->id)->get();
 			$classify_images = array();
-			$classify_goods = array();
+			$classify_goods  = array();
 			foreach($goods as $good){
 				$onegood = array();				
 
@@ -181,7 +181,7 @@ class ShopController extends BaseController {
 				}
 			}
 			$one['classify_images'] = $classify_images;
-			$one['classify_goods'] = $classify_goods;
+			$one['classify_goods']  = $classify_goods;
 			array_push($result, $one);
 		}
 		return $result;
@@ -195,10 +195,10 @@ class ShopController extends BaseController {
 	public function getAnnouncement($shop_id){
 		$data = array();
 		$shop = Shop::find($shop_id);
-
+		
 		$data['announce_content'] = $shop->announcement;
-		$data['start_price'] = $shop->begin_price;
-		$data['activities'] = array();
+		$data['start_price']      = $shop->begin_price;
+		$data['activities']       = array();
 
 		$menus = $shop->groups()->get();
 		foreach($menus as $menu){
@@ -226,14 +226,14 @@ class ShopController extends BaseController {
 		$shop = Shop::find($shop_id);
 		$menus = $shop->menus()->get()->sortByDesc('sold_week')->take(5);
 		foreach($menus as $menu){
-			$one = array();
-			$one['goods_id'] = $menu->id;
-			$one['goods_name'] = $menu->title;
-			$Level = $this->getLevel($menu);
-			$one['goods_level'] = $Level['thing_level'];
+			$one                  = array();
+			$one['goods_id']      = $menu->id;
+			$one['goods_name']    = $menu->title;
+			$Level                = $this->getLevel($menu);
+			$one['goods_level']   = $Level['thing_level'];
 			$one['comment_count'] = $Level['comment_count'];
-			$one['goods_price'] = $menu->price;
-			$one['shop_state'] = $menu->state == 1?'true':'false';
+			$one['goods_price']   = $menu->price;
+			$one['shop_state']    = $menu->state == 1?'true':'false';
 			array_push($data, $one);
 		}
 		return $data;
@@ -255,7 +255,7 @@ class ShopController extends BaseController {
 		$thing_level['level_2'] = $thing->comments()->whereBetween('value', array(1.5, 2.0))->count('value');
 		$thing_level['level_1'] = $thing->comments()->whereBetween('value', array(0.0, 1.0))->count('value');
 		
-		$result['thing_level'] = $thing_level;
+		$result['thing_level']   = $thing_level;
 		$result['comment_count'] = array_sum($thing_level);
 		if($result['comment_count'] == 0){
 			$result['thing_total'] = 0;
