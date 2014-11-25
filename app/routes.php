@@ -663,7 +663,7 @@ Route::get("shop", function() {
 
     return View::make("template.shop.shop")->with($data);
 });
-*/
+/**/
 Route::get("/login", function(){
     $data = [
         "find_password" => "http://www.hao123.com",

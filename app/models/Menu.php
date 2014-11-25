@@ -20,7 +20,4 @@
 		return $this->hasMany('CommentMenu', 'menu_id', 'id');
 	}
 
-	public function activity(){
-		return $this->hasOne('Activity', 'aid', 'activity_id');
-	}
 }
