@@ -21,6 +21,6 @@
 	}
 
 	public function activity(){
-		
+		return $this->hasOne('Activity', 'aid', 'activity_id');
 	}
 }

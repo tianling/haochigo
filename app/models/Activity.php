@@ -9,5 +9,8 @@ class Activity extends Eloquent{
 
 	protected $table = 'activity';
 
+	protected $primaryKey = 'aid';
+
+
 
 }

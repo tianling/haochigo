@@ -25,7 +25,6 @@ class Shop extends Eloquent{
 
     public function groups(){
         return $this->hasMany('MenuGroup', 'shop_id', 'id');
-    }
-
+    }    
 
 }
