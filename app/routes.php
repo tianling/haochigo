@@ -466,7 +466,7 @@ Route::get('/', function(){
 Route::get('test', 'ShopController@getGoodComment');
 Route::post('test', 'ShopController@cancelMenu');
 
-Route::get('shop/{id}', 'ShopController@shopMenus');
+Route::get('shop/{id}', 'ShopController@index');
 Route::get('shop/{id}/comments', 'ShopController@getComment');
 /*
 Route::get("shop", function() {

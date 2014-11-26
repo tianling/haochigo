@@ -21,7 +21,7 @@ class ShopController extends BaseController {
 	 * 对应API：API/shop/Blade商家菜单页
 	 * @param $shop_id 商家ID
 	 */
-	public function shopMenus($shop_id){
+	public function index($shop_id){
 		$data = array();
 
 		$data['userbar']['url'] = array("my_place" => "这里是地址",					// 这里的数据是前端写的，我把它复制到这儿来，获取该信息的函数应该写在用户系统里吧
@@ -94,9 +94,12 @@ class ShopController extends BaseController {
 			return '用户还没有登录';
 		}
 
-#TODO：前端给出用户的经纬度
-		$front_user->x = 29.5387440000;
-		$front_user->y = 106.6098690000;
+
+
+		$top_bar = array(
+			'url'  => array(),
+			'data' => array()
+		);
 														
 		$top_bar['url']['return_back'] = '';					// 返回主页的地址
 		$top_bar['url']['shop_url']    = 'shop/'.$shop_id;			// 当前商家的地址
@@ -119,10 +122,14 @@ class ShopController extends BaseController {
 	public function getShopInfo($shop_id){
 		if( Auth::check() ){
 			$front_user = Auth::user();
+#TODO：前端给出用户的经纬度
+			$front_user->x = 29.5387440000;
+			$front_user->y = 106.6098690000;
 			$shop = Shop::find($shop_id);
 		} else{
 			return '用户还没有登录';
 		}
+
 		$info = array();
 		
 		$info['shop_id']        = $shop_id;					// 商家ID
