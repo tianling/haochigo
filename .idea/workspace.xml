@@ -50,8 +50,8 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23659305" vertical-offset="6825" max-vertical-offset="34890">
-              <caret line="465" column="16" selection-start-line="465" selection-start-column="12" selection-end-line="465" selection-end-column="16" />
+            <state vertical-scroll-proportion="52.973186" vertical-offset="0" max-vertical-offset="34890">
+              <caret line="2239" column="47" selection-start-line="2239" selection-start-column="47" selection-end-line="2239" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -766,8 +766,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23659305" vertical-offset="6825" max-vertical-offset="34890">
-          <caret line="465" column="16" selection-start-line="465" selection-start-column="12" selection-end-line="465" selection-end-column="16" />
+        <state vertical-scroll-proportion="52.973186" vertical-offset="0" max-vertical-offset="34890">
+          <caret line="2239" column="47" selection-start-line="2239" selection-start-column="47" selection-end-line="2239" selection-end-column="47" />
           <folding />
         </state>
       </provider>
