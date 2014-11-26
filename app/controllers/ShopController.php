@@ -94,8 +94,6 @@ class ShopController extends BaseController {
 			return '用户还没有登录';
 		}
 
-
-
 		$top_bar = array(
 			'url'  => array(),
 			'data' => array()
