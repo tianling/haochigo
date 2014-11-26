@@ -49,18 +49,17 @@ class ShopController extends BaseController {
 		return View::make("template.shop.shop")->with($data);
 	}
 
-
 	/**
 	 * 商家评论页
 	 *
 	 * @return blade
 	 */
-#TODO：未完成
+#TODO：未完成，分页功能
 	public function shopComments($shop_id){
-		$output = array();
-		$output['top_bar'] = $this->getTopbar($shop_id);					// 获取顶部蓝信息
+		$output                           = array();
+		$output['top_bar']                = $this->getTopbar($shop_id);			// 获取顶部蓝信息
 		$output['comment']['comment_all'] = $this->getCommentPage($shop_id);	// 获取商家评论页
-		$output['coment_summary'] = $this->getCommentSummary;				// 总评价
+		$output['coment_summary']         = $this->getCommentSummary;			// 总评价
 	}
 
 	/**
@@ -72,9 +71,9 @@ class ShopController extends BaseController {
 		$shop = Shop::find($shop_id);
 		$data = array();
 
-		$Level = $this->getLevel($shop);
-		$data['shop_level'] = $Level['thing_level'];
-		$data['shop_total'] = $Level['thing_total'];
+		$Level                 = $this->getLevel($shop);
+		$data['shop_level']    = $Level['thing_level'];
+		$data['shop_total']    = $Level['thing_total'];
 		$data['comment_count'] = $Level['comment_count'];
 
 		return $data;
@@ -88,11 +87,7 @@ class ShopController extends BaseController {
 	 * 对应API：API/shop/商家菜单页
 	 */
 	public function getTopbar($shop_id){
-		if( Auth::check() ){
-			$shop = Shop::find($shop_id);
-		} else{
-			return '用户还没有登录';
-		}
+		$shop = Shop::find($shop_id);		
 		$top_bar = array(
 			'url'  => array(),
 			'data' => array()
@@ -117,16 +112,7 @@ class ShopController extends BaseController {
 	 * @return array
 	 */
 	public function getShopInfo($shop_id){
-		if( Auth::check() ){
-			$front_user = Auth::user();
-#TODO：前端给出用户的经纬度
-			$front_user->x = 29.5387440000;
-			$front_user->y = 106.6098690000;
-			$shop = Shop::find($shop_id);
-		} else{
-			return '用户还没有登录';
-		}
-
+		$shop = Shop::find($shop_id);
 		$info = array();
 		
 		$info['shop_id']        = $shop_id;					// 商家ID
@@ -143,9 +129,17 @@ class ShopController extends BaseController {
 		$info['shop_address']   = $shop->address;			// 商家地址
 		$info['deliver_begin']  = $shop->begin_time;		// 送餐开始时间
 		$xy                     = Geohash::find($shop_id);
-		$info['shop_distance']  = $this->GetDistance($xy->x, $xy->y, $front_user->x, $front_user->y); // 人与店铺的距离(米)
+#TODO：前端给出用户的经纬度		
+		$user_x = 29.5387440000;
+		$user_y = 106.6098690000;
+		$info['shop_distance']  = $this->GetDistance($xy->x, $xy->y, $user_x, $user_y); // 人与店铺的距离(米)
 		$info['price_begin']    = $shop->begin_price;		// 起送价
-		$info['is_collected']   = in_array($shop_id, $front_user->collectShop->lists('shop_id'))?true:false;	// 是否被收藏了
+		if( Auth::check()){
+			$front_user = Auth::user();
+			$info['is_collected'] = in_array($shop_id, $front_user->collectShop->lists('shop_id'))?'true':'false';	// 是否被收藏了
+		} else{
+			$info['is_collected'] = 'false';
+		}
 #TODO：右上角的送货速度，董天成添加这个API
 		$info['interval']       = $shop->interval;			// 送餐速度
 #TODO：shop_remark API里两个不同的top_bar
@@ -377,10 +371,6 @@ class ShopController extends BaseController {
 		}else{
 			return Redirect::to('http://baidu.com');
 
-			return Redirect::to('error')
-				->with('user', Auth::user())
-				->withErrors($v)
-				->withInput();
 		}
 		
 	}
