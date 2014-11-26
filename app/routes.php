@@ -463,7 +463,8 @@ Route::get('/', function(){
     return View::make('template.home.home')->with($data);
 });
 
-Route::get('shop/{id}', 'ShopController@index');
+Route::get('shop/{id}', 'ShopController@shopMenus');
+Route::get('shop/{id}/comments', 'ShopController@getComment');
 /*
 Route::get("shop", function() {
     $data = [
@@ -2284,6 +2285,8 @@ Route::get("/userBarMsg", function(){
 
 });
 
+Route::post('/ajax_collection_shop', 'ShopController@collectMenu');
+/*
 Route::post("/ajax_collection_shop", function(){
     $data = [
         "success" => "true"  ,                              // 成功
@@ -2295,6 +2298,7 @@ Route::post("/ajax_collection_shop", function(){
 
     return Response::json($data);
 });
+*/
 
 Route::post("/ajax_change_phone", function(){
     $data = [

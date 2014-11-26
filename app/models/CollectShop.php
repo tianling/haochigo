@@ -8,6 +8,8 @@ class CollectShop extends Eloquent{
 
 	public $timestamps = false;
 
+	protected $fillable = array('uid', 'shop_id', 'uptime');
+
 	protected $table = 'collect_shop';
 
 

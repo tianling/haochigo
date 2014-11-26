@@ -6,6 +6,14 @@
  * index($shop_id) 	商家菜单页
  */
 
+
+/**
+ * TODO
+ * 未完成的部分有：
+ * 位置地图shop_marp
+ * 购物车
+ * 评论切换分页
+ */
 class ShopController extends BaseController {
 
 	/**
@@ -13,12 +21,12 @@ class ShopController extends BaseController {
 	 * 对应API：API/shop/Blade商家菜单页
 	 * @param $shop_id 商家ID
 	 */
-	public function index($shop_id){
+	public function shopMenus($shop_id){
 		$data = array();
 
 		$data['userbar']['url'] = array("my_place" => "这里是地址",					// 这里的数据是前端写的，我把它复制到这儿来，获取该信息的函数应该写在用户系统里吧
 				"switch_palce"  => "##",
-				"logo"          => "123" ,                
+				"logo"          => "123",       
 				"mobile"        => "123",      
 				"my_ticket"     => "123",     
 				"my_gift"       => "123",  
@@ -31,16 +39,44 @@ class ShopController extends BaseController {
 				"loginout"      => "123",     
 				"switch_place"  => "123"   
                 );
-		$data['top_bar']                          = $this->getTopbar($shop_id);
-		$data['good_category']['data']            = $this->getGoodCategory($shop_id);
-		$data['category']['data']['classify_sec'] = $this->getCategory($shop_id);
-		$data['announcement']['data']             = $this->getAnnouncement($shop_id);
-		$data['best_seller']['data']              = $this->getBestSeller($shop_id);	// 本周热卖
+		$data['top_bar']                          = $this->getTopbar($shop_id);			// 获取顶部栏信息
+		$data['good_category']['data']            = $this->getGoodCategory($shop_id);	// 获取美食分类
+		$data['category']['data']['classify_sec'] = $this->getCategory($shop_id);		// 获取分类内容
+		$data['announcement']['data']             = $this->getAnnouncement($shop_id);	// 获取餐厅公告
+		$data['best_seller']['data']              = $this->getBestSeller($shop_id);		// 获取本周热卖
 #TODO：地图地址未完成
-		$data['shop_map']['data']['map_url']      = '地图地址';				// 地图地址
+		$data['shop_map']['data']['map_url']      = '地图地址';							// 地图地址
 		return View::make("template.shop.shop")->with($data);
 	}
 
+
+	/**
+	 * 商家评论页
+	 * @return blade
+	 */
+#TODO：未完成
+	public function shopComments($shop_id){
+		$output = array();
+		$output['top_bar'] = $this->getTopbar($shop_id);					// 获取顶部蓝信息
+		$output['comment']['comment_all'] = $this->getCommentPage($shop_id);	// 获取商家评论页
+		$output['coment_summary'] = $this->getCommentSummary;				// 总评价
+	}
+
+	/**
+	 * 获取商家的总评价comment_summary
+	 */
+	public function getCommentSummary($shop_id){
+		$shop = Shop::find($shop_id);
+		$data = array();
+
+		$Level = $this->getLevel($shop);
+		$data['shop_level'] = $Level['thing_level'];
+		$data['shop_total'] = $Level['thing_total'];
+		$data['comment_count'] = $Level['comment_count'];
+
+		return $data;
+	}
+	
 	/**
 	 * 功能：商家菜单页top_bar
 	 * 模块：前台
@@ -48,7 +84,6 @@ class ShopController extends BaseController {
 	 */
 	public function getTopbar($shop_id){
 		if( Auth::check() ){
-			$front_user = Auth::user();
 			$shop = Shop::find($shop_id);
 		} else{
 			return '用户还没有登录';
@@ -66,28 +101,46 @@ class ShopController extends BaseController {
 		$top_bar['url']['message_url'] = 'shop/'.$shop_id.'/message';// 商家留言的地址
 #TODO：在routes前端自己写的数据里有map_url选项，API里有两个不同的top_bar->url
 		$top_bar['url']['map_url']	   = '地图地址';
-		$top_bar['data']['shop_id']    	   = $shop_id;					// 商家ID
-#TODO：place_id不需要
-		$top_bar['data']['shop_logo'] 	   = $shop->pic;			// 商家的logo图片地址
-		$top_bar['data']['shop_name'] 	   = $shop->name;			// 商家名称
-		$top_bar['data']['shop_type'] 	   = $shop->type;			// 商家类型,逗号分隔的字符串
-		$Level = $this->getLevel($shop);
-		$top_bar['data']['shop_level'] 	   = $Level['thing_level'];	// 总共10个等级
-		$top_bar['data']['shop_total'] 	   = $Level['thing_total'];	// 总评价
-		$top_bar['data']['comment_count']  = $Level['comment_count'];// 评论人数
-		$top_bar['data']['shop_statement'] = $shop->intro; 			// 商家简介
-		$top_bar['data']['shop_time'] 	   = $shop->operation_time;	// 营业时间，字符串表示
-		$top_bar['data']['shop_address']   = $shop->address;		// 商家地址
-		$top_bar['data']['deliver_begin']  = $shop->begin_time;		// 送餐开始时间
-		$xy = Geohash::find($shop_id);
-		$top_bar['data']['shop_distance']  = $this->GetDistance($xy->x, $xy->y, $front_user->x, $front_user->y); // 人与店铺的距离(米)
-		$top_bar['data']['price_begin']    = $shop->begin_price;	// 起送价
-		$top_bar['data']['is_collected']   = in_array($shop_id, $front_user->collectShop->lists('shop_id'))?true:false;	// 是否被收藏了
-#TODO：右上角的送货速度，董天成添加这个API
-		$top_bar['data']['interval'] 	   = $shop->interval;				// 送餐速度
-#TODO：shop_remark API里两个不同的top_bar
-		$top_bar['data']['shop_remark']    = '';
+		$top_bar['data'] = $this->getShopInfo($shop_id);
 		return $top_bar;
+	}
+
+	/**
+	 * 获取某个店铺的基本信息
+	 * @return array
+	 */
+	public function getShopInfo($shop_id){
+		if( Auth::check() ){
+			$front_user = Auth::user();
+			$shop = Shop::find($shop_id);
+		} else{
+			return '用户还没有登录';
+		}
+		$info = array();
+		
+		$info['shop_id']        = $shop_id;					// 商家ID
+#TODO：place_id不需要
+		$info['shop_logo']      = $shop->pic;				// 商家的logo图片地址
+		$info['shop_name']      = $shop->name;				// 商家名称
+		$info['shop_type']      = $shop->type;				// 商家类型,逗号分隔的字符串
+		$Level                  = $this->getLevel($shop);
+		$info['shop_level']     = $Level['thing_level'];	// 总共10个等级
+		$info['shop_total']     = $Level['thing_total'];	// 总评价
+		$info['comment_count']  = $Level['comment_count'];	// 评论人数
+		$info['shop_statement'] = $shop->intro; 			// 商家简介
+		$info['shop_time']      = $shop->operation_time;	// 营业时间，字符串表示
+		$info['shop_address']   = $shop->address;			// 商家地址
+		$info['deliver_begin']  = $shop->begin_time;		// 送餐开始时间
+		$xy                     = Geohash::find($shop_id);
+		$info['shop_distance']  = $this->GetDistance($xy->x, $xy->y, $front_user->x, $front_user->y); // 人与店铺的距离(米)
+		$info['price_begin']    = $shop->begin_price;		// 起送价
+		$info['is_collected']   = in_array($shop_id, $front_user->collectShop->lists('shop_id'))?true:false;	// 是否被收藏了
+#TODO：右上角的送货速度，董天成添加这个API
+		$info['interval']       = $shop->interval;			// 送餐速度
+#TODO：shop_remark API里两个不同的top_bar
+		$info['shop_remark']    = '';
+
+		return $info;
 	}
 
 	/**
@@ -265,6 +318,50 @@ class ShopController extends BaseController {
 		return $result;
 	}
 
+	/**
+	 * API/shop/获取一个商品的评论
+	 *
+	 * 请求类型：get
+	 * @return [type] [description]
+	 */
+	public function getGoodComment(){
+		$good_id = Input::get('goods_id');
+		$menu = Menu::find($good_id):
+
+		if( $comments = $menu->comments() ){
+			$output = array();
+			$output['success'] = 'true';
+			$output['state'] = 200;
+			$output['nextSrc'] = '';
+			$output['errMsg'] = '';
+			$output['no'] = 0;
+			$Level = $this->getLevel($menu);
+			$output['data']['shop_level'] = $Level['thing_level'];
+			$output['data']['shop_total'] = $Level['thing_total'];
+			$output['data']['comment_total'] = $Level['thing_total'];
+			$output['data']['comment_body'] = array();
+
+			foreach($comments as $comment){
+				$one = array();
+				$one['comment_person'] = FrontUser::find($comment->front_uid)->nickname;
+				$one['comment_date'] = $comment->time;
+				$one['comment_level'] = $comment->value;
+				$one['comment_content'] = $comment->content;
+				array_push($output['data']['comment_body'], $one);
+			}
+
+			Response::json($output);
+
+		}else{
+			return Redirect::to('http://baidu.com');
+
+			return Redirect::to('error')
+				->with('user', Auth::user())
+				->withErrors($v)
+				->withInput();
+		}
+	}
+
     /**
      * 计算两个坐标之间的距离
      * @param 显示店铺的横纵坐标，然后是用户的横纵坐标
@@ -284,4 +381,159 @@ class ShopController extends BaseController {
         return $s;  
     }
 
+    /**
+     * 对应API：API/shop/评论切换分页
+     * 
+     * @return ajax
+     */
+#TODO：未完成
+    public function getCommentPage(){
+    	$shop_id = Input::get('shop_id');
+    	$page = Input::get('comment_pages');
+    	$comment_all = array();
+
+		$comments = Shop::find($shop_id)->comments()->paginate(3);
+		$comment_all['comment_pages'] = $comments->getLastPage();
+
+		$comments->getTo(2);
+
+	
+		echo $comments->getCurrentPage();		// 当前页
+		echo $comments->getLastPage();			// 最后一页的页码
+		echo $comments->getTotal();				// 总共的数量
+		echo $comments->count();				// 本页的数量
+		//echo $comments->getPerPage();
+		var_dump($comments);
+    }
+
+    /**
+     * 取消收藏商品
+     *
+     * 对应API：API/shop/取消收藏商品
+     * @return [type] [description]
+     */
+    public function cancelMenu(){
+    	if( !Auth::check() ){
+			return Redirect::to('http://weibo.com');
+		}
+
+		$user = Auth::user();
+		$rules = array(
+			'uid'   => 'required | integer',
+			'shop_id' => 'required | integer',
+			'goods_id' => 'required | integer'
+		);
+		$new_collect = array(
+			'uid' => $user->front_uid,
+			'shop_id' => Input::get('shop_id'),
+			'goods_id'  => Input::get('goods_id')
+		);
+		$v = Validator::make($new_collect, $rules);
+		if( $v->fails() ){
+			return Redirect::to('http://baidu.com');
+
+			return Redirect::to('error')
+				->with('user', Auth::user())
+				->withErrors($v)
+				->withInput();
+		}
+
+		if( CollectMenu::where('menu_id', Input::get('shop_id'))->where('uid', $user->front_uid)->delete() ){
+			$output = array();
+			$output['success'] = 'true';
+			$output['state'] = 200;
+			$output['nextSrc'] = '';
+			$output['errMsg'] = '';
+			$output['no'] = 0;
+			Response::json($output);
+		}
+    }
+
+	/**
+	 * 取消收藏某个商家
+	 *
+	 * 对应API：API/shpo/取消收藏某个商家
+	 * 请求类型：POST
+	 * @return array 执行状态
+	 */
+	public function cancelShop(){
+		if( !Auth::check() ){
+			return Redirect::to('http://weibo.com');
+		}
+
+		$user = Auth::user();
+		$rules = array(
+			'uid'   => 'required | integer',
+			'shop_id' => 'required | integer',
+		);
+		$new_collect = array(
+			'uid' => $user->front_uid,
+			'shop_id' => Input::get('shop_id'),
+		);
+		$v = Validator::make($new_collect, $rules);
+		if( $v->fails() ){
+			return Redirect::to('http://baidu.com');
+
+			return Redirect::to('error')
+				->with('user', Auth::user())
+				->withErrors($v)
+				->withInput();
+		}
+
+		if( CollectShop::where('shop_id', $shop_id)->where('uid', $user->front_uid)->delete() ){
+			$output = array();
+			$output['success'] = 'true';
+			$output['state'] = 200;
+			$output['nextSrc'] = '';
+			$output['errMsg'] = '';
+			$output['no'] = 0;
+			Response::json($output);
+		}
+	}
+
+	/**
+	 * 收藏某个店铺
+	 *
+	 * 对应：API/shop/收藏商家
+	 * 请求类型：POST
+	 * @return array 执行状态
+	 */
+	public function collectShop(){
+		if( !Auth::check() ){
+			return Redirect::to('http://weibo.com');
+		}
+
+		$user = Auth::user();
+		$rules = array(
+			'uid'   => 'required | integer',
+			'shop_id' => 'required | integer',
+		);
+		$new_collect = array(
+			'uid' => $user->front_uid,
+			'shop_id' => Input::get('shop_id'),
+			'uptime'  => time()
+		);
+		$v = Validator::make($new_collect, $rules);
+		if( $v->fails() ){
+			return Redirect::to('http://baidu.com');
+
+			return Redirect::to('error')
+				->with('user', Auth::user())
+				->withErrors($v)
+				->withInput();
+		}
+
+		$collect = new CollectShop($new_collect);
+		if( $collect->save() ){
+			$output = array();
+			$output['success'] = 'true';
+			$output['state'] = 200;
+			$output['nextSrc'] = '';
+			$output['errMsg'] = '';
+			$output['no'] = 0;
+			$output['data']= $this->getShopInfo(Input::get('shop_id'));
+			//var_dump($output);
+			Response::json($output);
+		}
+	}
 }
