@@ -463,6 +463,9 @@ Route::get('/', function(){
     return View::make('template.home.home')->with($data);
 });
 
+Route::get('test', 'ShopController@getGoodComment');
+Route::post('test', 'ShopController@cancelMenu');
+
 Route::get('shop/{id}', 'ShopController@shopMenus');
 Route::get('shop/{id}/comments', 'ShopController@getComment');
 /*

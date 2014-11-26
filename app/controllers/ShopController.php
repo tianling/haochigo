@@ -52,6 +52,7 @@ class ShopController extends BaseController {
 
 	/**
 	 * 商家评论页
+	 *
 	 * @return blade
 	 */
 #TODO：未完成
@@ -64,6 +65,8 @@ class ShopController extends BaseController {
 
 	/**
 	 * 获取商家的总评价comment_summary
+	 *
+	 * 测试完成
 	 */
 	public function getCommentSummary($shop_id){
 		$shop = Shop::find($shop_id);
@@ -80,6 +83,8 @@ class ShopController extends BaseController {
 	/**
 	 * 功能：商家菜单页top_bar
 	 * 模块：前台
+	 *
+	 * 测试完成
 	 * 对应API：API/shop/商家菜单页
 	 */
 	public function getTopbar($shop_id){
@@ -107,6 +112,8 @@ class ShopController extends BaseController {
 
 	/**
 	 * 获取某个店铺的基本信息
+	 *
+	 * 测试完成
 	 * @return array
 	 */
 	public function getShopInfo($shop_id){
@@ -147,6 +154,8 @@ class ShopController extends BaseController {
 	 * 功能：商家菜单页美食分类，商品的分类和活动是一起的，不过活动还是单独列一张表出来的
 	 * 模块：前台
 	 * 对应API：API/shop/商家菜单页/美食分类
+	 *
+	 * 测试完成
 	 */
 	public function getGoodCategory($shop_id){
 		$data = array();
@@ -181,6 +190,8 @@ class ShopController extends BaseController {
 	/**
 	 * 获取某个店铺分类的内容
 	 * 模块：前台
+	 *
+	 * 测试完成
 	 * 对应API：API/shop/商家菜单页/分类内容
 	 */
 	public function getCategory($shop_id){
@@ -243,6 +254,8 @@ class ShopController extends BaseController {
 	/**
 	 * 获取某餐厅的公告
 	 * @param  $shop_id 
+	 *
+	 * 测试完成
 	 * @return array
 	 */
 	public function getAnnouncement($shop_id){
@@ -271,6 +284,8 @@ class ShopController extends BaseController {
 	/**
 	 * 获取店铺的本周热卖,5个商品,销量前五的
 	 * @param  $shop_id
+	 *
+	 * 测试完成
 	 * @return array
 	 */
 	public function getBestSeller($shop_id){
@@ -296,6 +311,8 @@ class ShopController extends BaseController {
 	 * 计算某个店铺评分的各个等级的
 	 *
 	 * @param  $thing 某个店铺或者某个商品
+	 *
+	 * 测试完成
 	 * @return array(评论数，总评论数，总评价)
 	 */
 	public function getLevel($thing){
@@ -322,13 +339,16 @@ class ShopController extends BaseController {
 	 * API/shop/获取一个商品的评论
 	 *
 	 * 请求类型：get
+	 *
+	 * 测试完成
 	 * @return [type] [description]
 	 */
 	public function getGoodComment(){
 		$good_id = Input::get('goods_id');
-		$menu = Menu::find($good_id):
+		$menu = Menu::find($good_id);
+		$comments = $menu->comments;
 
-		if( $comments = $menu->comments() ){
+		if( $comments != NULL){
 			$output = array();
 			$output['success'] = 'true';
 			$output['state'] = 200;
@@ -349,9 +369,7 @@ class ShopController extends BaseController {
 				$one['comment_content'] = $comment->content;
 				array_push($output['data']['comment_body'], $one);
 			}
-
 			Response::json($output);
-
 		}else{
 			return Redirect::to('http://baidu.com');
 
@@ -360,11 +378,14 @@ class ShopController extends BaseController {
 				->withErrors($v)
 				->withInput();
 		}
+		
 	}
 
     /**
      * 计算两个坐标之间的距离
      * @param 显示店铺的横纵坐标，然后是用户的横纵坐标
+     *
+     * 测试完成
      * @return int 单位是米
      */
     private function GetDistance($lat1, $lng1, $lat2, $lng2){
@@ -409,6 +430,8 @@ class ShopController extends BaseController {
     /**
      * 取消收藏商品
      *
+     * 测试完成
+     *
      * 对应API：API/shop/取消收藏商品
      * @return [type] [description]
      */
@@ -420,12 +443,10 @@ class ShopController extends BaseController {
 		$user = Auth::user();
 		$rules = array(
 			'uid'   => 'required | integer',
-			'shop_id' => 'required | integer',
 			'goods_id' => 'required | integer'
 		);
 		$new_collect = array(
 			'uid' => $user->front_uid,
-			'shop_id' => Input::get('shop_id'),
 			'goods_id'  => Input::get('goods_id')
 		);
 		$v = Validator::make($new_collect, $rules);
@@ -438,7 +459,7 @@ class ShopController extends BaseController {
 				->withInput();
 		}
 
-		if( CollectMenu::where('menu_id', Input::get('shop_id'))->where('uid', $user->front_uid)->delete() ){
+		if( CollectMenu::where('menu_id', Input::get('goods_id'))->where('user_id', $user->front_uid)->delete() ){
 			$output = array();
 			$output['success'] = 'true';
 			$output['state'] = 200;
@@ -453,6 +474,8 @@ class ShopController extends BaseController {
 	 * 取消收藏某个商家
 	 *
 	 * 对应API：API/shpo/取消收藏某个商家
+	 *
+	 * 测试完成
 	 * 请求类型：POST
 	 * @return array 执行状态
 	 */
@@ -480,7 +503,7 @@ class ShopController extends BaseController {
 				->withInput();
 		}
 
-		if( CollectShop::where('shop_id', $shop_id)->where('uid', $user->front_uid)->delete() ){
+		if( CollectShop::where('shop_id', Input::get('shop_id'))->where('uid', $user->front_uid)->delete() ){
 			$output = array();
 			$output['success'] = 'true';
 			$output['state'] = 200;
@@ -496,6 +519,7 @@ class ShopController extends BaseController {
 	 *
 	 * 对应：API/shop/收藏商家
 	 * 请求类型：POST
+	 * 测试通过
 	 * @return array 执行状态
 	 */
 	public function collectShop(){
