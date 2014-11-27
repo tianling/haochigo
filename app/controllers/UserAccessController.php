@@ -69,15 +69,20 @@ class UserAccessController extends BaseController{
 
     }
 
+    /**
+     * 相消息队列推送发短信job
+     */
     public function sendMessage(){
-        $send = App::make('SendMessageClass');
 
-        $send->mobile = '13399857034';
-        $send->tpl_id = 1;
-        $send->tpl_value = '#code#=1234&#company#=好吃go';
+        $mobile='13399857034';
+        $tpl_id = 1;
+        $tpl_value = '#code#=1234&#company#=好吃go';
 
-        $status = $send->tpl_send();
+        $status = Queue::push('QueueSendMessage@send', array('mobile' => $mobile,'tpl_id'=>1,'tpl_value'=>$tpl_value));
+
         var_dump($status);
+
+
     }
 
 

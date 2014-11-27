@@ -5,10 +5,18 @@
 */
 
 class QueueSendMessage{
-    public function fire($job, $data)
+
+    public function send($job, $data)
     {
-        //echo $data['message'];
-        Log::info($data['message']); // 生成日志
-        $job->delete();               // 删除任务
+        $send = App::make('SendMessageClass');
+
+        $send->mobile = $data['mobile'];
+        $send->tpl_id = $data['tpl_id'];
+        $send->tpl_value = $data['tpl_value'];
+
+        $status = $send->tpl_send();
+        Log::info($status);
+
+        $job->delete();// 删除任务
     }
 }
