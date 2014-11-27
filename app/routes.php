@@ -22,7 +22,10 @@ Route::post('login','UserAccessController@login');
 
 Route::get('message','UserAccessController@sendMessage');
 
-
+Route::get('qtest', function()
+{
+    Queue::push('QueueSendMessage', array('message' => 'DuoLaiMi'));
+});
 
 Route::get('/', function(){
     $data = [
