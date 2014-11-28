@@ -121,7 +121,7 @@ class Geohash extends Eloquent{
 
             foreach($shopData as  $data){
                 $shopArray[$i]['geohash'] = $data->toArray();
-                $shopArray[$i]['shopData'] = $data->shop->toArray();
+                $shopArray[$i]['shopData'] = $data->shop;
                 $i++;
             }
 
