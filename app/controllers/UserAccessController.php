@@ -76,7 +76,8 @@ class UserAccessController extends BaseController{
 
         $mobile='13399857034';
         $tpl_id = 1;
-        $tpl_value = '#code#=1234&#company#=好吃go';
+        $code = rand(100000,999999);
+        $tpl_value = '#code#='.$code.'&#company#=好吃go';
 
         $status = Queue::push('QueueSendMessage@send', array('mobile' => $mobile,'tpl_id'=>1,'tpl_value'=>$tpl_value));
 

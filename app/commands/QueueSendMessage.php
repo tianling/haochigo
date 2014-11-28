@@ -15,7 +15,13 @@ class QueueSendMessage{
         $send->tpl_value = $data['tpl_value'];
 
         $status = $send->tpl_send();
-        Log::info($status);
+        $log = array(
+            'status'=>$status,
+            'time'=>date('Y-m-d H:i:s',time())
+        );
+        $log = json_encode($log);
+
+        Log::info($log);
 
         $job->delete();// 删除任务
     }
