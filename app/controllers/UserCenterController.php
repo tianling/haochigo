@@ -33,15 +33,46 @@ class UserCenterController extends BaseController{
                 ));
                 exit();
             }
-            $typeName =  $file->getClientOriginalExtension();
+            $typeName =  $file->getClientOriginalExtension();//获取文件后缀名
+            $uid = Auth::user()->front_uid;
 
             $newFileName = $this->fileNameMake($filename,$typeName);
+            $directoryName = $uid%100;//根据用户id和100的模值，生成对应存储目录地址
+            $savePath = public_path().'/uploads/frontUser/'.$directoryName.'/photo';
 
-            $fileSave = $file -> move(app_path().'/storage/uploads',$newFileName);
+            $fileSave = $file -> move($savePath,$newFileName);
+
             if($fileSave){
-                
+                $Icon = new FrontUserIcon();
+                $Icon->front_uid = $uid;
+                $Icon->icon_url = asset('uploads/frontUser/'.$directoryName.'/photo/'.$newFileName);
+                $Icon->update_time = time();
+
+                if($Icon->save()){
+                    echo json_encode(array(
+                        'status'=>'200',
+                        'msg'=>'upload finished'
+                    ));
+
+                }else{
+                    echo json_encode(array(
+                        'status'=>'400',
+                        'msg'=>'save failed'
+                    ));
+                }
+
+            }else{
+                echo json_encode(array(
+                    'status'=>'400',
+                    'msg'=>'move failed'
+                ));
             }
 
+        }else{
+            echo json_encode(array(
+                'status'=>'400',
+                'msg'=>'invalid file'
+            ));
         }
 
     }

@@ -20,6 +20,10 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
         return $this->belongsTo('User','uid','uid');
     }
 
+    public function icon(){
+        return $this->hasMany('FrontUserIcon','front_uid','front_uid');
+    }
+
     public function collectShop(){
     	return $this->hasMany('CollectShop', 'uid', 'front_uid');
     }
