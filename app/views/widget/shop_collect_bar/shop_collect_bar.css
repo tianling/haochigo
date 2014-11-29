@@ -1,0 +1,29 @@
+.rst-fav {
+  margin: 0;
+  padding: 14px 7px 10px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  background: #fff; }
+  .rst-fav .glyph {
+    display: block;
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    border-bottom: 1px solid #ddd;
+    color: #ddd;
+    font: 26px/1em "eleme","sans-serif"; }
+  .rst-fav .glyph.on {
+    color: #f5522c; }
+  .rst-fav .status {
+    display: block;
+    color: #a3a3a3;
+    font: 13px/1.1em "Helvetica Neue",Arial,"Microsoft Yahei",sans-serif;
+    word-spacing: -2px; }
+
+.rst-fav:hover {
+  background: #f8f8f8; }
+  .rst-fav:hover .glyph {
+    color: #f5522c; }
+
+/*# sourceMappingURL=shop_collect_bar.css.map */

@@ -25,7 +25,7 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
     }
 
     public function collectMenu(){
-    	return $this->hasMany('collectMenu');
+    	return $this->hasMany('collectMenu', 'user_id', 'front_uid');
     }
 }
 

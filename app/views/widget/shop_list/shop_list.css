@@ -64,6 +64,10 @@
 	position: relative;
 	top: -1px;
 }
+
+.shops .shops-header .drop_button.active{
+	background:  none repeat scroll 0% 0% #F0F0F0;;
+}
 .shops .shops-header .flavor_block ul {
 	display: none;
 	position: absolute;

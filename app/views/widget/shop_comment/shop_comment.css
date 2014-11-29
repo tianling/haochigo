@@ -1,0 +1,68 @@
+/* 
+ * shop comment
+ */
+.rst-block {
+  width: 846px;
+  position: relative;
+  margin-bottom: 14px;
+  font-size: 14px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+  background: #fff;
+  font-size: 14px; }
+  .rst-block .rst-subnav {
+    display: inline-block;
+    padding: 0 26px;
+    line-height: 44px;
+    color: #666; }
+  .rst-block .rst-subnav.u-active {
+    background: #3199e8;
+    color: #fff; }
+
+.rst-rating {
+  padding: 14px 14px 0;
+  background: #f0f0f0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08); }
+  .rst-rating .rst-rating-wrapper {
+    /* -webkit-column-gap: 14px;
+    -webkit-column-count: 2; */ }
+  .rst-rating .rst-rating-block {
+    box-sizing: border-box;
+    width: 402px;
+    float: left;
+    margin-right: 14px;
+    overflow: hidden;
+    padding: 20px;
+    margin-bottom: 14px;
+    border-radius: 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08);
+    background: #fff; }
+    .rst-rating .rst-rating-block .rst-rating-dish {
+      margin: 0 0 10px;
+      padding: 0 0 14px;
+      color: #999;
+      font-size: 14px;
+      line-height: 1em; }
+      .rst-rating .rst-rating-block .rst-rating-dish a {
+        color: #08c; }
+      .rst-rating .rst-rating-block .rst-rating-dish a:hover {
+        text-decoration: underline; }
+      .rst-rating .rst-rating-block .rst-rating-dish .icon-d-star {
+        float: right;
+        width: 65px;
+        height: 12px;
+        background: no-repeat 0 0;
+        vertical-align: text-top; }
+    .rst-rating .rst-rating-block .rst-rating-text {
+      word-break: break-word;
+      margin: 0;
+      font: 16px/1.5em "microsoft yahhei"; }
+    .rst-rating .rst-rating-block .rst-rating-info {
+      margin: 30px 0 0;
+      color: #999;
+      font-size: 12px;
+      line-height: 1em; }
+  .rst-rating .rst-rating-block:nth-child(even) {
+    margin-right: 0px; }
+
+/*# sourceMappingURL=shop_comment.css.map */

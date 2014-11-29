@@ -18,11 +18,15 @@ more_shops 更多餐厅
 
 my_collection 我的收藏
 
+my_collection_alert 我的收藏弹出框
+
 shop_uncollected 我的收藏空白位置
 
 nav 显示我的地址的
 
-shop_sec 每一个餐厅的方块
+shop_sec 我的收藏中的每一个餐厅的方块
+
+shop_info 更多餐厅中的每一个餐厅的方块
 
 swipe 顶部图片轮播
 
@@ -44,6 +48,14 @@ goods_collection 我的收藏(商品)
 hot_sails 本周热卖
 
 shop_map 商店地图
+
+pop_window 用户评论弹出框
+
+shop_cart 购物车
+
+shop_comment 商家评论
+
+shop_evaluate 商家评论得分框
 
 
 #### personal
@@ -75,3 +87,5 @@ personal_uncomment 未点评的订单
 personal_verify_email 验证邮箱
 
 personal_verify_phone 验证手机
+
+shop_collect_bar   商家页面最右收藏按钮

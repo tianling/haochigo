@@ -10,21 +10,21 @@
 
 <div class="login-bd">
 	{{-- 普通方式表单 --}}
-	<form class="m-login" novalidate="true" id="login-form">
+	<form class="m-login" novalidate="true" id="login-form" method="post">
 
 		{{-- 普通方式登陆 --}}
 		<div class="way-login-normal js-normal-wapper">
 
 			{{-- 用户名 --}}
 			<div class="u-input-item" id="login-user-name">
-				<input type="text" name="user-name" id="" class="user-name box f-pr" placeholder="用户名/电子邮箱" minlength="5" required>
-				<div class="u-error-tip f-dn">请填写用户名</div>
+				<input type="text" name="user-name" id="" class="user-name box f-pr" placeholder="电子邮箱" minlength="5" required>
+				<div class="u-error-tip f-dn">请填写正确邮箱</div>
 			</div>
 	        
 	        {{-- 密码 --}}
 			<div class="u-input-item" id="login-user-pwd">
 				<input type="password" name="user-name" id="" class="user-name box f-pr" placeholder="密码" minlength="6" maxlength="20" required>
-				<div class="u-error-tip f-dn">请填写密码</div>
+				<div class="u-error-tip f-dn">请填写正确密码格式</div>
 			</div>
 	        
 	        {{-- 验证码 --}}
@@ -46,7 +46,7 @@
             {{-- 验证码 --}}
             <div id="login-user-auth2" class="u-input-item">
 		        <button id="sms-btn" type="button" class="sms-btn">发送验证码</button>
-		        <input id="verify-code-input" class="box" name="code" type="text" placeholder="短信验证码" minlength="6" maxlength="6" autocomplete="off" required="" id="login-user-auth2">
+		        <input id="verify-code-input" class="box" name="code" type="text" placeholder="短信验证码"minlength="6" maxlength="6" autocomplete="off" required="" id="login-user-auth2">
 		        <div class="u-error-tip f-dn">请填写验证码</div>
             </div>
 		</div>
@@ -62,17 +62,6 @@
 
         <input type="submit" class="u-login-submit" value="登陆">
 	</form>
-    
-    {{-- 语音验证方式 --}}
-	<div class="way-login-voice js-mobile-wapper f-dn">
-		<p class="u-voice-tip">收不到短信?使用<a href="##" class="voice-btn">语音验证</a></p>
-
-		<p class="u-voice-process f-dn">
-			接通中...请留意来自
-			<span class="dialing-number">021-54332216</span>
-			的电话
-		</p>
-	</div>
 </div>
 
 {{-- 登陆底部 --}}

@@ -12,5 +12,4 @@ class CollectMenu extends Eloquent{
 
 	protected $table = 'collect_menu';
 
-
 }

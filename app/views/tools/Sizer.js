@@ -1,6 +1,7 @@
 // 筛选器
 
 define(['jquery'], function($){
+
 	function isInArray(value, arr){
 		for(var i = 0,len = arr.length; i < len ; i++){
 			if(arr[i] === value){
@@ -10,8 +11,9 @@ define(['jquery'], function($){
 		return -1;
 	}
 
+
 	function Sizer(){
-		this.data = {};
+		this.data = [];
 	}
 
 	/**
@@ -19,52 +21,59 @@ define(['jquery'], function($){
 	 * @数据标签 label
 	 * @数据的值 value
 	 */
-	Sizer.prototype.add = function(label, value){
+	Sizer.prototype.add = function(value){
 		var self = this;
 
-		if(!self.data[label]){
-			self.data[label] = [];
-		}
 		if($.isFunction(value)) return;
 
-		if(!$.isArray(value)) value = [value];
-
-		self.data[label].push(value);
+		for(var i = 0,len = value.length;  i < len ; i ++){
+			self.data.push(value[i]);
+		}
 	};
 
 
 
 	/**
 	 * 获取
-	 * @要获取的标签 labels
+	 * @要获取的标签 labels { isHot : 1, flavor : "中式"}
 	 * @returns {Array}
 	 */
-	Sizer.prototype.get = function(labels){
+	Sizer.prototype.get = function(labelObject){
 		var self = this,
 			data = self.data,
 			index;
 
-		if(!$.isArray(labels)) labels = [labels];
+		if(!$.isPlainObject(labelObject)) return;
 
 		var result = [];
 
-		for(var key in data){
-			index = isInArray(key, labels);
 
-			if(index >= 0){
-				result.push({
-					label : labels[index],
-					value : data[key]
-				});
-				labels.splice(index, 1);
+		for(var i = 0,len = self.data.length; i < len; i ++){
+			var target = self.data[i],
+                flag  = true;
+
+
+			for(var name in labelObject) {
+
+				if(name == "support_activity"){
+					var activity = labelObject[name];
+					for(var j = 0,len_activity = activity.length; j < len_activity ; j ++){
+						if(target['support_activity'][j] != activity[j]){
+							flag = false;
+						}
+					}
+				}
+				if (name != "support_activity" && target[name] !=  labelObject[name]) {
+                    flag = false;
+				}
 			}
+            if(flag){
+                result.push(target);
+            }
 		}
 
 		return result;
 	};
 
-
-	return {
-		Sizer : new Sizer()
-	}
+	return new Sizer()
 });

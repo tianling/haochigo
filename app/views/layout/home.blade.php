@@ -17,6 +17,8 @@
                 @yield("swipe")
                 {{-- 我的收藏 --}}
                 @yield("my_collection")
+                {{-- 我的收藏弹出 --}}
+                @yield("my_collection_alert")
                 {{-- 餐厅列表 --}}
                 @yield("shop_list")
                 {{-- 5个广告图片 --}}

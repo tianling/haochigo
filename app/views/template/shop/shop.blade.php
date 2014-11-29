@@ -9,39 +9,40 @@
     @include("widget/shop_details/shop_details",array("active" => "meun"))
 @stop
 
-{{-- 美食分类 --}}
-@section("cate_category")
+@section("shop_left")
+    {{-- 美食分类 --}}
     @include("widget/cate_category/cate_category")
-@stop
-
-{{-- 美食列表--}}
-@section("cate_list")
+    {{-- 美食列表--}}
     @include("widget/cate_list/cate_list")
 @stop
 
- {{-- 餐厅公告 --}}
-@section("restaurant_announcement")
+@section("shop_right")
+    {{-- 餐厅公告 --}}
     @include("widget/restaurant_announcement/restaurant_announcement")
-@stop
-
-{{-- 我的收藏(商品) --}}
-@section("goods_collection")
+    {{-- 我的收藏(商品) --}}
     @include("widget/goods_collection/goods_collection")
-@stop
-
-{{-- 本周热卖 --}}
-@section("hot_sails")
+    {{-- 本周热卖 --}}
     @include("widget/hot_sails/hot_sails")
-@stop
-
-{{-- 商店地图 --}}
-@section("shop_map")
+    {{-- 商店地图 --}}
     @include("widget/shop_map/shop_map")
 @stop
+
 
 {{-- 购物车 --}}
 @section("shop_cart")
     @include('widget.shop_cart.shop_cart')
+@stop
+
+{{-- 左侧滑出的评论框 --}}
+
+@section("pop_window")
+    @include("widget.pop_window.pop_window")
+@stop
+
+
+{{-- 最右侧收藏按钮 --}}
+@section("shop_collect_bar")
+    @include("widget.shop_collect_bar.shop_collect_bar")
 @stop
 
 
@@ -56,6 +57,7 @@
 	{{HTML::style("/css/lib/jquery-ui.min.css")}}
 	{{HTML::style("/css/lib/ui-btn.css")}}
 	{{HTML::style("/css/lib/font.css") }}
+    {{HTML::style("/css/template/lib/function.css") }}
 @stop
 
 @section("script")
