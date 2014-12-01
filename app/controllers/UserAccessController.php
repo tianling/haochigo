@@ -57,6 +57,14 @@ class UserAccessController extends BaseController{
         $password = Input::get('password');
 
         $accountCheck = $this->accountCheck($account);
+        if(!is_object($accountCheck)){
+            echo json_encode(array(
+                'status'=>400,
+                'msg'=>'账户不存在'
+            ));
+
+            exit();
+        }
 
         $passwordCheck = Hash::check($password,$accountCheck->user->password);
 
@@ -81,7 +89,12 @@ class UserAccessController extends BaseController{
 
         $status = Queue::push('QueueSendMessage@send', array('mobile' => $mobile,'tpl_id'=>1,'tpl_value'=>$tpl_value));
 
-        var_dump($status);
+        $codeKey = md5($this->getIP().$mobile);
+        Cache::put($codeKey,$code,1);
+
+        $key = Cache::get($codeKey);
+
+        var_dump($key);
 
 
     }
