@@ -21,6 +21,7 @@ Route::get('register', 'UserAccessController@register');
 Route::post('login','UserAccessController@login');
 
 Route::get('message','UserAccessController@sendMessage');
+Route::post('message','UserAccessController@MessageCheck');
 
 Route::post('userphoto','UserCenterController@portraitUpload');
 

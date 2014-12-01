@@ -90,11 +90,30 @@ class UserAccessController extends BaseController{
         $status = Queue::push('QueueSendMessage@send', array('mobile' => $mobile,'tpl_id'=>1,'tpl_value'=>$tpl_value));
 
         $codeKey = md5($this->getIP().$mobile);
-        Cache::put($codeKey,$code,1);
+        Cache::tags('register','code')->put($codeKey,$code,1);
 
-        $key = Cache::get($codeKey);
+        $key = Cache::tags('register','code')->get($codeKey);
 
         var_dump($key);
+
+
+    }
+
+
+    public function MessageCheck(){
+        $mobileKey = Input::get('key');
+
+        $mobile='13399857034';
+
+        $codeKey = md5($this->getIP().$mobile);
+
+        $key = Cache::tags('register','code')->get($codeKey);
+
+        if($key == $mobileKey){
+            echo "ok";
+        }else{
+            echo "false";
+        }
 
 
     }
