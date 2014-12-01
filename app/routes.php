@@ -1,12 +1,5 @@
 <?php
 
-
-Route::get('/', function()
-{
-	return View::make('hello');
-});
-
-
 Route::get('users', function()
 {
     return 'Users!';
@@ -32,7 +25,7 @@ Route::get('shop/{id}', 'ShopController@index');                // 商家页面
 Route::get('shop/{id}/comments', 'ShopController@shopComments');// 商家评论页
 Route::post('collectshop', 'ShopController@collectShop');       // 收藏某个店铺
 Route::post('collectmenu', 'ShopController@cancelShop');        // 取消收藏某个店铺
-Route::post('addmenu', 'ShopController@addMenu');               // 添加菜单
+
 
 
 # 用户
@@ -46,8 +39,14 @@ Route::get('profile', function(){});                            // 个人中心
 Route::get('profile/shop', function(){});                       // 收藏的店铺
 Route::get('profile/menu', function(){});                       // 收藏的美食
 Route::get('profile/security', function(){});                   // 安全设置
-Route::post('cancelMenu', 'ShopController@cancelMenu');         // 取消收藏商品
-Route::post('cancelShop', 'PersonalController@cancelShop');     // 取消收藏店铺
+Route::post('addorder', 'PersonalController@addOrder');			// 添加订单
+Route::post('cancelmenu', 'PersonalController@cancelMenu');     // 取消收藏商品
+Route::post('cancelshop', 'PersonalController@cancelShop');     // 取消收藏店铺
+Route::post('collectmenu', 'PersonalController@collectMenu');	// 收藏某个商品
+Route::post('collectshop', 'PersonalController@collectShop');	// 收藏某个店铺
+Route::post('confirmorder', 'PersonalController@confirmOrder');	// 确认收货
+Route::post('modifyOrder', 'PersonalController@modifyOrder');	// 修改订单状态：0表示已提交未付款，1表示已付款未收货，2表示已收获，3表示取消订单
+
 
 
 #测试

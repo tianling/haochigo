@@ -7,13 +7,10 @@
  * shopComments($shop_id)					商家评论页
  *
  *
- * addMenu()								添加菜单
- * cancelShop()								取消收藏某个商家
- * collectShop()							收藏某个店铺
  * getAnnouncement($shop_id)				获取某个店铺的公告
  * getBestSeller($shop_id)					获取某个店铺的本周热卖
  * getCategory($shop_id)					获取店铺分类的具体内容
- * getDistance($lat1, $lng1, $lat2, $lng2)	计算两个坐标之间的举例
+ * getDistance($lat1, $lng1, $lat2, $lng2)	计算两个坐标之间的距离
  * getGoodCategory($shop_id)				获取店铺的分类信息
  * getGoodComment()							获取某个商品的评论
  * getLevel($thing)							获取店铺/菜单的评价统计信息
@@ -72,106 +69,6 @@ class ShopController extends BaseController {
 #	上面是页面：
 #	下面是方法：
 ##
-
-	/**
-	 * 添加一个菜单
-	 * 商铺
-	 * 请求类型：POST
-	 */
-	public function addMenu(){
-		if( !Auth::check() ){
-			return Redirect::to('http://weibo.com');
-		}
-
-		$user = Auth::user();
-		var_dump($user);
-	}
-
-	/**
-	 * 取消收藏某个商家
-	 *
-	 * 测试完成
-	 * 请求类型：POST
-	 */
-	public function cancelShop(){
-		if( !Auth::check() ){
-			return Redirect::to('http://weibo.com');
-		}
-
-		$user = Auth::user();
-		$rules = array(
-			'uid'     => 'required | integer',
-			'shop_id' => 'required | integer',
-		);
-		$new_collect = array(
-			'uid'     => $user->front_uid,
-			'shop_id' => Input::get('shop_id'),
-		);
-		$v = Validator::make($new_collect, $rules);
-		if( $v->fails() ){
-			return Redirect::to('http://baidu.com');
-
-			return Redirect::to('error')
-				->with('user', Auth::user())
-				->withErrors($v)
-				->withInput();
-		}
-
-		if( CollectShop::where('shop_id', Input::get('shop_id'))->where('uid', $user->front_uid)->delete() ){
-			$output            = array();
-			$output['success'] = 'true';
-			$output['state']   = 200;
-			$output['nextSrc'] = '';
-			$output['errMsg']  = '';
-			$output['no']      = 0;
-			Response::json($output);
-		}
-	}
-
-	/**
-	 * 收藏某个店铺
-	 *
-	 * 对应：API/shop/收藏商家
-	 * 请求类型：POST
-	 */
-	public function collectShop(){
-		if( !Auth::check() ){
-			return Redirect::to('http://weibo.com');
-		}
-
-		$user = Auth::user();
-		$rules = array(
-			'uid'     => 'required | integer',
-			'shop_id' => 'required | integer',
-		);
-		$new_collect = array(
-			'uid'     => $user->front_uid,
-			'shop_id' => Input::get('shop_id'),
-			'uptime'  => time()
-		);
-		$v = Validator::make($new_collect, $rules);
-		if( $v->fails() ){
-			return Redirect::to('http://baidu.com');
-
-			return Redirect::to('error')
-				->with('user', Auth::user())
-				->withErrors($v)
-				->withInput();
-		}
-
-		$collect = new CollectShop($new_collect);
-		if( $collect->save() ){
-			$output            = array();
-			$output['success'] = 'true';
-			$output['state']   = 200;
-			$output['nextSrc'] = '';
-			$output['errMsg']  = '';
-			$output['no']      = 0;
-			$output['data']    = $this->getShopInfo(Input::get('shop_id'));
-			//var_dump($output);
-			Response::json($output);
-		}
-	}
 
 	/**
 	 * 获取某餐厅的公告

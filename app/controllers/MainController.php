@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Collection;
  * 主页
  *
  * index()   			主页面
+ * 
  * getAddImage()		5个广告图片
  * getLevel($thing)		计算某个店铺的评分统计
  * getMyStore()			获取我收藏的店铺
