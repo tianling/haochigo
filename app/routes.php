@@ -30,6 +30,17 @@ Route::get('qtest', function()
     Queue::push('QueueSendMessage', array('message' => 'DuoLaiMi'));
 });
 
+
+Route::get('usercenter', array('before' => 'loginCheck', 'uses' => 'UserCenterController@index'));
+
+Route::filter('loginCheck', function()
+{
+    if (!Auth::check())
+    {
+        return Redirect::to('login');
+    }
+});
+
 Route::get('/', function(){
     $data = [
         "pic_swap" => [

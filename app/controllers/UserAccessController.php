@@ -152,9 +152,7 @@ class UserAccessController extends BaseController{
     }
 
 
-
 }
-
 
 
 ?>

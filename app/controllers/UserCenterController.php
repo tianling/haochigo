@@ -5,10 +5,15 @@
 */
 class UserCenterController extends BaseController{
 
+    private $uid;
+
     /**
      * 个人中心主页
      **/
     public function index(){
+        $this->uid = Auth::user()->front_uid;
+
+        
 
     }
 
