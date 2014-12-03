@@ -72,7 +72,7 @@ class UserAccessController extends BaseController{
             Auth::login($accountCheck);
         }
 
-        var_dump(Auth::user()->email);
+        return Redirect::to('usercenter');
 
 
     }
@@ -80,6 +80,8 @@ class UserAccessController extends BaseController{
     //退出接口
     public function logout(){
         Auth::logout();
+
+        return Redirect::to('/');
     }
 
     /**

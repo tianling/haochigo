@@ -299,6 +299,47 @@ class UserCenterController extends BaseController{
 
 
     /**
+     * 收藏美食页面
+     **/
+    public function menuCollect(){
+        $this->uid = Auth::user()->front_uid;
+
+        $menuData = FrontUser::find($this->uid)->collectMenu;
+
+        $data['good_count'] = $menuData->count();
+
+        $data['goods'] = array();
+
+        $i = 0;
+        foreach($menuData as $value){
+            $data['goods'][$i] = array(
+                'good_id'=>$value->menu_id,
+                'good_name'=>$value->menu->title,
+                'shop_name'=>$value->menu->shop->name,
+                'shop_id'=>$value->menu->shop->id,
+                'shop_href'=>url('shop/'.$value->menu->shop->id),
+                'order_href'=>'#',
+                'good_price'=>$value->menu->price,
+                'delete_good'=>url('cancelmenu'),
+                'shop_hot'=>''
+
+            );
+
+            $i++;
+
+        }
+
+        $data['sidebar'] = $this->sideBar();
+
+        $data['userbar']['url'] = $this->userBar();
+
+        return View::make("template.personal.personal_collection_goods")->with($data);
+
+
+    }
+
+
+    /**
      * 用户头像上传
      **/
     public function portraitUpload(){
@@ -409,7 +450,7 @@ class UserCenterController extends BaseController{
             "personal_uncomment" => "#" ,  // 未点评的订单
             "personal_return" => "#",     // 退单中的订单
             "personal_collection_shop" => url("usercenter/collect_shop"),// 我收藏的餐厅的地址
-            "personal_collection_goods" => url("personal_collection_goods"), // 我收藏的商品的地址
+            "personal_collection_goods" => url("usercenter/collect_menu"), // 我收藏的商品的地址
             "personal_my_site" => url("personal_my_site") ,  // 我的地址
             "personal_change_password" => url("personal_change_password"), // 修改密码
             "personal_secure"=> url("personal_secure"),        // 安全设置

@@ -12,4 +12,8 @@ class CollectMenu extends Eloquent{
 
 	protected $table = 'collect_menu';
 
+    public function menu(){
+        return $this->belongsTo('Menu', 'menu_id', 'id');
+    }
+
 }

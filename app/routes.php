@@ -38,6 +38,8 @@ Route::get('usercenter/after_month', array('before' => 'loginCheck', 'uses' => '
 
 Route::get('usercenter/collect_shop',array('before' => 'loginCheck', 'uses' => 'UserCenterController@shopCollect'));
 
+Route::get('usercenter/collect_menu',array('before' => 'loginCheck', 'uses' => 'UserCenterController@menuCollect'));
+
 
 Route::filter('loginCheck', function()
 {
@@ -63,10 +65,6 @@ Route::post('collectmenu', 'ShopController@cancelShop');        // 取消收藏�
 
 # 用户
 Route::get('mail', function(){});                               // 用户提醒
-Route::get('switch_place', function(){});                       // 切换地址
-Route::get('profile', function(){});                            // 个人中心
-Route::get('profile/shop', function(){});                       // 收藏的店铺
-Route::get('profile/menu', function(){});                       // 收藏的美食
 Route::get('profile/security', function(){});                   // 安全设置
 Route::post('addorder', 'PersonalController@addOrder');			// 添加订单
 Route::post('cancelmenu', 'PersonalController@cancelMenu');     // 取消收藏商品

@@ -347,7 +347,7 @@ class MainController extends BaseController {
 				"feedback"      => 'feedback',                			// 反馈留言地址
 				"shop_chart"    => "cart",                				// 购物车地址
 				"user_mail"     => "mail",                				// 用户提醒的地址
-				"personal"      => "profile",                			// 个人中心地址
+				"personal"      => "usercenter",                			// 个人中心地址
 				"my_collection" => "profile/shop",               		// 我的收藏地址
 				"my_secure"     => "profile/security",              	// 安全设置的地址
 				"loginout"      => "loginout",              			// 退出登录的地址
