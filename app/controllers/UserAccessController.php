@@ -77,6 +77,11 @@ class UserAccessController extends BaseController{
 
     }
 
+    //退出接口
+    public function logout(){
+        Auth::logout();
+    }
+
     /**
      * 相消息队列推送发短信job
      */

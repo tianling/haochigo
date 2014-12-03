@@ -70,14 +70,22 @@ p{
 	 			border-color: #df4d3f transparent transparent;
 	 		}
 
-	 		//验证码
-	 		.register-captcha{
- 				width: 170px;
- 		    }
- 		    .captcha-img{
- 		    	margin: 1px 0 0;
- 		    	height: 40px;
- 		    	cursor: pointer;
+ 		    //短信按钮
+ 		    .sms-btn{
+ 		    	background-color: #3199e8;
+ 		    	color: #fff;
+ 		    	width: 106px;
+ 		    	right: 5px;
+ 		    	top: 5px;
+ 		    	padding: 0 5px;
+ 		    	height: 32px;
+
+ 		    	display: block;
+	 			box-sizing: border-box;
+	 			border-radius: 2px;
+	 			border: none;
+	 			text-align: center;
+	 			position: absolute;
  		    }
  		}
         

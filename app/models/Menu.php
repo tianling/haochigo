@@ -12,6 +12,8 @@
 
 	protected $table = 'menu';
 
+	protected $fillable = array('shop_id', 'group_id', 'title', 'price', 'orignal_price', 'pic', 'pic_small', 'state');
+
 	public function shop(){
 		return $this->belongsTo('Shop', 'shop_id', 'id');
 	}

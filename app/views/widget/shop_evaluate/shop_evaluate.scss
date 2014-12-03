@@ -1,0 +1,73 @@
+.rst-rating-aside{
+	padding: 25px;
+	margin-bottom: 14px;
+	border-radius: 2px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+	background: #fff;
+
+	.rating-point{
+		margin: 0 0 15px;
+		float: left;
+		.point{
+			float: left;
+			color: #ff6c0f;
+			font: 300 52px/1em "Helvetica Neue",arial,sans-serif;
+		}
+		.detail{
+			margin: 6px 0 0 90px;
+			.rating-stars{
+				font-size: 15px;
+				position: relative;
+				top:1px;
+				.glyph-rating-star{
+					display: inline-block;
+					margin-right: 1px;
+					overflow: hidden;
+					color: #ff9370;
+					font-family: "elem";
+					speak:none;
+					line-height: 1;
+				}
+			}
+
+			.comment{
+				margin: 0;
+				text-align: left;
+				font-size: 13px;
+				display: block;
+				width: 75px;
+				color: #999;
+			}
+		}
+	}
+
+	.rating-diagram{
+		color: #999;
+		float: left;
+		.diagram-item{
+			margin-bottom: 4px;
+			font-size: 12px;
+			line-height: 1em;
+
+			.glyph-rating-star{
+				display: inline-block;
+				margin-right: 1px;
+				overflow: hidden;
+				color: #ff9307;
+				font-family: "eleme"
+			}
+			.glyph-rating-star.off{
+					color: #a7a7a7;
+			}
+
+		}
+		.bar{
+			width: 97.2px;
+			display: inline-block;
+			margin: 0 5px;
+			height: 10px;
+			background: #ff924a;
+
+		}
+	}
+}

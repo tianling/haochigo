@@ -8,9 +8,8 @@ class CollectMenu extends Eloquent{
 
 	public $timestamps = false;
 
-	protected $fillable = array('uid', 'menu_id', 'uptime');
+	protected $fillable = array('user_id', 'menu_id', 'uptime');
 
 	protected $table = 'collect_menu';
-
 
 }

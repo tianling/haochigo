@@ -62,6 +62,16 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => 'v_',
 		),
+        'mysql' => array(
+            'driver'    => 'mysql',
+            'host'      => '127.0.0.1',
+            'database'  => 'v_haochigo',
+            'username'  => 'tianling',
+            'password'  => '887976',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => 'v_',
+        ),
 
 		'pgsql' => array(
 			'driver'   => 'pgsql',

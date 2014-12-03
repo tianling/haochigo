@@ -1,5 +1,3 @@
-
-
  .collection-row-book,
 .collection-row-none {
   cursor: pointer;
@@ -9,7 +7,13 @@
   padding: 10px;
   border-left: 1px solid #ddd;
 }
-
+ .collection-row a:first-child .collection-row-book,
+ .collection-row a:first-child .collection-row-none {
+     border: 0;
+ }
+.collection-row-wrapper{
+    float: left;
+}
  .collection-row-book {
   position: relative;
 }

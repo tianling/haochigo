@@ -5,12 +5,28 @@ define(['jquery'], function($){
      * @inlude "切换登陆方式"
      * @inlude "验证表单"
      * @include "ajax 登陆"
-     * @include "验证码点击切换"
+     * @include "验证码点击切换/发送验证码"
     */
+     
+     var $smsBtn = $(".sms-btn");
 
-    //验证码点击切换
+    //图片验证码
     $(".captcha-img").on("click",function(){
-        $.get("/switch_auth",function(res){
+        getAuth({ 'auth_way' : 'image' });
+    });
+    //短信验证码
+    $smsBtn.on("click",function(){
+        getAuth({ 
+            'auth_way'  : 'sms',
+            'timestemp' : new Date().getTime(),   //时间戳
+            'telNumber' : $("#user-mobile").val()
+        });
+    });
+
+    //验证码ajax请求
+    function getAuth(data,callback){
+        $.post("/switch_auth", data, function(res){
+            res = {};
             if( typeof res != object ){
                 try{
                     res = $.parseJSON(res);
@@ -21,12 +37,35 @@ define(['jquery'], function($){
             }
 
             if( res.success && res.nextSrc ){
-                $(".captcha-img").attrs("src",res.nextSrc);
+                if(res.nextSrc){
+                    $(".captcha-img").attrs("src",res.nextSrc);
+                }else{
+                    alert("短信已经发送，请注意接收验证码");
+                    
+                    //计时禁止连续发送30秒
+                    $smsBtn.attr("disabled","disabled");
+
+                    var count     = 30,
+                        orginText = $smsBtn.text();
+
+                    var authTimer = setInterval(function(){
+                        $smsBtn.text( (count--) + "秒后可再发送");
+
+                        if(count < 1 ){
+                            $smsBtn.text(orginText).removeAttr("disabled");
+                            clearInterval(authTimer);
+                        }
+                    },1000);
+                }
             }else if( !res.success && res.errMsg){
                 alert(res.errMsg);
             }
-
         });
+    }
+
+    //输入框绑定事件,每次获得焦点时隐藏提示
+    $("#register-form input").on('focus',function(){
+        $(".u-error-tip").hide();
     });
      
     //切换登陆方式
@@ -73,7 +112,7 @@ define(['jquery'], function($){
         $(".u-error-tip").hide();
     });
 
-    var $divUserName = $("#login-user-name"),
+    var $divUserEmail = $("#login-user-name"),
         $divUserPwd  = $("#login-user-pwd"),
         $divUserTel  = $("#login-user-mobile"),
         $divAuth1    = $("#login-user-auth1"),
@@ -81,16 +120,20 @@ define(['jquery'], function($){
 
     //表单验证     
     function checkLogin(data){
+        //先隐藏原来的errtip
+        $(".u-error-tip").hide();
 
+        var regEmail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/, //邮箱验证
+            regTel   = /^[\d]{11}$/; //手机号码目前只支持11位
 
         //normal err tip
         var $errPwd      = $divUserPwd.find(".u-error-tip"),
-            $errUserName = $divUserName.find(".u-error-tip"),
+            $errUserName = $divUserEmail.find(".u-error-tip"),
             $errAuth     = $divAuth1.find(".u-error-tip");
         
         if( loginWay == 'normal'){
-            //用户名没有输入
-            if( data.user_email.length < 1 ){
+            //验证邮箱
+            if( !regEmail.test(data.user_email) ){
                 $errUserName.show();
                 return false;
             }else{
@@ -114,8 +157,9 @@ define(['jquery'], function($){
             }
 
         }else if( loginWay == 'mobile'){
-            //电话号码没有输入
-            if( !/^[\d]{11}$/.test(data.user_email) ){
+            //电话号码没有输入  user_email 此时存的是电话号码
+            alert(regTel);
+            if( !regTel.test(data.user_email) ){
                 $divUserTel.find(".u-error-tip").show();
                 return false;
             }
@@ -155,11 +199,11 @@ define(['jquery'], function($){
                         alert("服务器异常，稍后再试");
                     }
                 }else{
-                    if( res.no || (res.no >= 1 && res.no <= 4) { //填写错误
+                    if( res.no || (res.no >= 1 && res.no <= 4) ){ //填写错误
 
                         switch( res.no ){
                             //用户名错误
-                            case 1: showInputError($divUserName,res.errMsg.inputMsg);
+                            case 1: showInputError($divUserEmail,res.errMsg.inputMsg);
                             break;
                             
                             //密码错误
@@ -206,8 +250,11 @@ define(['jquery'], function($){
 
     //表单提交
     $("#login-form").on("submit",function(ev){
+        ev.preventDefault();
+
         var data = {
-            'user_psw'      : $divUserPwd.find("input").val(),          //密码
+            'login_way' : loginWay,                                  //登陆方式
+            'user_psw'  : $divUserPwd.find("input").val(),          //密码
 
             'user_remember' : (function(){
                    if( $("#auto-login")[0].checked == true )return true;
@@ -216,7 +263,7 @@ define(['jquery'], function($){
 
             'user_email' : (function(){
 
-                if( loginWay == 'normal' ){return $divUserName.find("input").val();}
+                if( loginWay == 'normal' ){return $divUserEmail.find("input").val();}
                 else if( loginWay == 'mobile') {return $divUserTel.find("input").val();}
 
             })(),                                                       //登陆用户名 || 邮箱||电话号码
@@ -235,7 +282,8 @@ define(['jquery'], function($){
         }
         
         ajaxForm(data);
-
+        
+        //保险起见
         return false;
     });
 

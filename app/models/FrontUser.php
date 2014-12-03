@@ -15,13 +15,15 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
 
     public $timestamps = false;
 
+    public $remember_token = false;
+
     public function user()
     {
         return $this->belongsTo('User','uid','uid');
     }
 
     public function icon(){
-        return $this->hasMany('FrontUserIcon','front_uid','front_uid');
+        return $this->hasOne('FrontUserIcon','front_uid','front_uid');
     }
 
     public function collectShop(){
@@ -29,7 +31,7 @@ class FrontUser extends Eloquent implements UserInterface, RemindableInterface{
     }
 
     public function collectMenu(){
-    	return $this->hasMany('collectMenu');
+    	return $this->hasMany('collectMenu', 'user_id', 'front_uid');
     }
 }
 

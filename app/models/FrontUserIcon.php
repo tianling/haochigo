@@ -12,7 +12,7 @@ class FrontUserIcon extends Eloquent{
 
     public $timestamps = false;
 
-    public function fronUser(){
+    public function frontUser(){
         return $this->belongsTo('FrontUser','front_uid','front_uid');
     }
 
