@@ -89,7 +89,7 @@ class UserAccessController extends BaseController{
             'success'=>true,
             'state'=>200,
             'nextSrc'=>url('usercenter'),
-            
+
        ));
 
 
