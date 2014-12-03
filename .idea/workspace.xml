@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2429022" vertical-offset="806" max-vertical-offset="2100">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="2" selection-end-line="73" selection-end-column="12" />
+            <state vertical-scroll-proportion="-8.916667" vertical-offset="1466" max-vertical-offset="2100">
+              <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -38,8 +38,8 @@
       <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.041666" vertical-offset="4826" max-vertical-offset="5460">
-              <caret line="349" column="46" selection-start-line="349" selection-start-column="46" selection-end-line="349" selection-end-column="46" />
+            <state vertical-scroll-proportion="-18.916666" vertical-offset="4826" max-vertical-offset="5460">
+              <caret line="352" column="82" selection-start-line="352" selection-start-column="82" selection-end-line="352" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -48,18 +48,8 @@
       <file leaf-file-name="UserCenterController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/UserCenterController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-122.666664" vertical-offset="4076" max-vertical-offset="7275">
+            <state vertical-scroll-proportion="-278.75" vertical-offset="330" max-vertical-offset="7275">
               <caret line="468" column="57" selection-start-line="468" selection-start-column="57" selection-end-line="468" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserAccessController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/UserAccessController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-23.125" vertical-offset="810" max-vertical-offset="2820">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,6 +70,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-12.5" vertical-offset="0" max-vertical-offset="390">
               <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FrontUser.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/FrontUser.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.692429" vertical-offset="11" max-vertical-offset="645">
+              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -129,7 +129,6 @@
         <option value="$PROJECT_DIR$/app/config/cache.php" />
         <option value="$PROJECT_DIR$/app/storage/logs/laravel.log" />
         <option value="$PROJECT_DIR$/app/models/FrontUserIcon.php" />
-        <option value="$PROJECT_DIR$/app/models/FrontUser.php" />
         <option value="$PROJECT_DIR$/app/models/Order.php" />
         <option value="$PROJECT_DIR$/app/models/CollectShop.php" />
         <option value="$PROJECT_DIR$/app/models/CollectMenu.php" />
@@ -140,6 +139,7 @@
         <option value="$PROJECT_DIR$/app/views/widget/login_form/login_form.js" />
         <option value="$PROJECT_DIR$/app/controllers/UserAccessController.php" />
         <option value="$PROJECT_DIR$/app/config/database.php" />
+        <option value="$PROJECT_DIR$/app/models/FrontUser.php" />
       </list>
     </option>
   </component>
@@ -849,14 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/FrontUser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7119476" vertical-offset="0" max-vertical-offset="645">
-          <caret line="32" column="33" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CollectShop.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36824876" vertical-offset="0" max-vertical-offset="611">
@@ -913,14 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.041666" vertical-offset="4826" max-vertical-offset="5460">
-          <caret line="349" column="46" selection-start-line="349" selection-start-column="46" selection-end-line="349" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/widget/login_form/login_form.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2992126" vertical-offset="3195" max-vertical-offset="4425">
@@ -937,6 +921,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.916667" vertical-offset="1466" max-vertical-offset="2100">
+          <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserAccessController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.2949526" vertical-offset="2186" max-vertical-offset="2820">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.916666" vertical-offset="4826" max-vertical-offset="5460">
+          <caret line="352" column="82" selection-start-line="352" selection-start-column="82" selection-end-line="352" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UserCenterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-278.75" vertical-offset="330" max-vertical-offset="7275">
+          <caret line="468" column="57" selection-start-line="468" selection-start-column="57" selection-end-line="468" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/CollectMenu.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.375" vertical-offset="0" max-vertical-offset="360">
@@ -945,26 +961,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserCenterController.php">
+    <entry file="file://$PROJECT_DIR$/app/models/FrontUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-122.666664" vertical-offset="4076" max-vertical-offset="7275">
-          <caret line="468" column="57" selection-start-line="468" selection-start-column="57" selection-end-line="468" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UserAccessController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-23.125" vertical-offset="810" max-vertical-offset="2820">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2429022" vertical-offset="806" max-vertical-offset="2100">
-          <caret line="64" column="0" selection-start-line="64" selection-start-column="2" selection-end-line="73" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.692429" vertical-offset="11" max-vertical-offset="645">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
           <folding />
         </state>
       </provider>
