@@ -53,14 +53,18 @@ class UserAccessController extends BaseController{
     //登录接口
     public function login(){
 
-        $account = Input::get('account');
-        $password = Input::get('password');
+        $account = Input::get('user_email');
+        $password = Input::get('user_psw');
 
         $accountCheck = $this->accountCheck($account);
         if(!is_object($accountCheck)){
             echo json_encode(array(
-                'status'=>400,
-                'msg'=>'账户不存在'
+                'success'=>'false',
+                'state'=>200,
+                'errMsg'=>array(
+                    'inputMsg'=>'用户不存在'
+                ),
+                'no'=>1
             ));
 
             exit();
@@ -70,9 +74,23 @@ class UserAccessController extends BaseController{
 
         if($passwordCheck){
             Auth::login($accountCheck);
+        }else{
+            echo json_encode(array(
+                'succcess'=>'false',
+                'state'=>200,
+                'errMsg'=>array(
+                    'inputMsg'=>'密码验证失败'
+                ),
+                'no'=>2
+            ));
         }
 
-        return Redirect::to('usercenter');
+       echo json_encode(array(
+            'success'=>true,
+            'state'=>200,
+            'nextSrc'=>url('usercenter'),
+            
+       ));
 
 
     }
