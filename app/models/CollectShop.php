@@ -12,5 +12,9 @@ class CollectShop extends Eloquent{
 
 	protected $table = 'collect_shop';
 
+    public function shop(){
+        return $this->belongsTo('Shop', 'shop_id', 'id');
+    }
+
 
 }

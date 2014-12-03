@@ -171,6 +171,9 @@ class UserCenterController extends BaseController{
     }
 
 
+    /**
+     * 一个月前订单信息页面
+     */
     public function afterMonth(){
         $this->uid = Auth::user()->front_uid;
 
@@ -246,6 +249,51 @@ class UserCenterController extends BaseController{
         $data['userbar']['url'] = $this->userBar();
 
         return View::make("template.personal.personal_after_month")->with($data);
+
+    }
+
+
+    /*
+     * 收藏的商家页面
+     **/
+    public function shopCollect(){
+        $this->uid = Auth::user()->front_uid;
+
+        $shopData = FrontUser::find($this->uid)->collectShop;
+
+        $data["shops"]["now_area"] = "重庆";
+
+        $data["shops"]["now_shop_count"] = $shopData->count();
+
+        $data["shops"]["other_shop_count"] = 0;
+
+        $i = 0;
+        foreach($shopData as $value){
+            $data["shops"]['now_place'][$i] = array(
+                'shop_id'=>$value->shop_id,
+                'shop_name'=>$value->shop->name,
+                'shop_logo'=>$value->shop->pic,
+                'shop_url'=>url('shop/'.$value->shop_id),
+                'shop_type'=>$value->shop->type,
+                'shop_level'=>'',
+                'deliver_time'=>$value->shop->operation_time,
+                'shop_statue'=>$value->shop->is_online,
+                'goods_count'=>0
+
+            );
+
+            $i++;
+
+        }
+
+        $data["shops"]['other_place'] = array();
+
+        $data['sidebar'] = $this->sideBar();
+
+        $data['userbar']['url'] = $this->userBar();
+
+        return View::make("template.personal.personal_collection_shop")->with($data);
+
 
     }
 
@@ -360,7 +408,7 @@ class UserCenterController extends BaseController{
             "personal_after_month" => url("usercenter/after_month") , // 一个月之前
             "personal_uncomment" => "#" ,  // 未点评的订单
             "personal_return" => "#",     // 退单中的订单
-            "personal_collection_shop" => url("personal_collection_shop"),// 我收藏的餐厅的地址
+            "personal_collection_shop" => url("usercenter/collect_shop"),// 我收藏的餐厅的地址
             "personal_collection_goods" => url("personal_collection_goods"), // 我收藏的商品的地址
             "personal_my_site" => url("personal_my_site") ,  // 我的地址
             "personal_change_password" => url("personal_change_password"), // 修改密码
